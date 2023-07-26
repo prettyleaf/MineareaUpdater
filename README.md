@@ -1,1 +1,3 @@
-# MineareaUpdate
+# MineareaUpdater
+## Updater
+## Host
