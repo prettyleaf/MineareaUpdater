@@ -71,11 +71,11 @@ MODE 87,10
 echo -------------------------------------------------------------------------------
 echo If you have got a problem/issue, please report it back in our discord server.
 echo Most of problems you meet are on user's side, so please make sure you're doing
-echo everything right, so you don't waste yours and ours time.            
+echo everything right, so you don't waste your and our time.            
 echo -------------------------------------------------------------------------------
 echo.
 timeout /T 10 >nul | echo 			Please wait 10 sec to continue^!
-Resources\cmdMenuSel f870 "                                    Continue" ""
+Resources\cmdMenuSel f870 "                                    Continue"
 if %ERRORLEVEL% == 1 goto welcome
 
 ::welcome screen
@@ -94,7 +94,7 @@ if %ERRORLEVEL% == 1 goto foldercheck
 :foldercheck
 Title Checking updates...1
 if exist "%userprofile%\.minearea" (
-goto versioncheck
+goto getVer
 ) else (
     goto foldercreate
 )
@@ -102,24 +102,59 @@ goto versioncheck
 :foldercreate
 Title Creating folder...
 mkdir "%userprofile%\.minearea"
+goto foldercheck
+
+:getVer
+Title Checking updates...2
+cls 
+MODE 79,20
+echo -------------------------------------------------------------------------------
+echo                        Trying to verify version...
+echo -------------------------------------------------------------------------------
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/version.verify" --ssl-no-revoke --output version.verify
+move version.verify %userprofile%\.minearea
+goto versioncheck 
 
 :versioncheck
-Title Checking updates...2
-if exist "%userprofile%\.minearea\version.txt" (
+Title Checking updates...3
+findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %userprofile%\.minearea\version.verify >Nul
+if %errorlevel%==0 (
 goto noupdatesfound
-) else (
-    goto updatesfound
 )
 
+if %errorlevel%==1 (
+goto updatesfound
+)
+::if exist "%userprofile%\.minearea\verify.version" (
+::goto noupdatesfound
+::) else (
+::    goto updatesfound
+::)
+
 :updatesfound
-Title Checking updates...3
-robocopy %userprofile%\Desktop\MineareaUpdater\Resources "%userprofile%\.minearea" version.txt /mt /z
+Title Checking updates...4
+cls
+MODE 87,17
+call :colorEcho c0 "-------------------------------------------------------------------------------"
+echo.
+call :colorEcho c0 "   Your updater is outdated and it downloads wrong MC modpack. Please update."
+echo.
+call :colorEcho c0 "                             Redirecting you..."
+echo.
+call :colorEcho c0 "               Don't forget to delete outdated updater folder."
+echo. 
+call :colorEcho c0 "-------------------------------------------------------------------------------"
+timeout 5 >nul
+start "" https://github.com/Rockstar234/MineareaUpdater/releases
+exit 
+
+::robocopy %userprofile%\Desktop\MineareaUpdater\Resources "%userprofile%\.minearea" verify.version /mt /z /is /it /im
 
 :noupdatesfound
-Title Still updated.
+Title Verify complete
 cls
 echo -------------------------------------------------------------------------------
-echo                        Your updater is already updated.
+echo                        Your updater is up to date.
 echo -------------------------------------------------------------------------------
 Resources\cmdMenuSel f870 "                                    Continue"
 if %ERRORLEVEL% == 1 goto mainmenu
@@ -136,12 +171,11 @@ echo match the version in discord, then click Update Client. If version is fine 
 echo you need to update your game, then click Update Game. You can also come back
 echo here after installation and check your version by clicking Version Check button.
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Update Client" "  Update Game" "  Check version" "  Discord Server" "  Exit"
+Resources\cmdMenuSel f870 "  Update Client" "  Update Game" "  Discord Server" "  Exit"
 if %ERRORLEVEL% == 1 goto updateclient
 if %ERRORLEVEL% == 2 goto updategame
-if %ERRORLEVEL% == 3 goto whatismyversion
-if %ERRORLEVEL% == 4 goto discordserver
-if %ERRORLEVEL% == 5 goto closescript
+if %ERRORLEVEL% == 3 goto discordserver
+if %ERRORLEVEL% == 4 goto closescript
 
 :discordserver
 Title Discord Server
@@ -168,11 +202,20 @@ start "" https://github.com/Rockstar234/MineareaUpdater/releases
 exit
 
 :updategame
-
-:whatismyversion
+Title Updating game
+cls
+MODE 79,20
+echo -------------------------------------------------------------------------------
+echo                        Trying to update your game...
+echo -------------------------------------------------------------------------------
+curl -L  "https://drive.google.com/file/d/10XF5zorbxb-jqPm80HtGn91X6VJq_w9U/view?usp=sharing" --ssl-no-revoke --output MC1.0.4.7z
+::for %%I in ("MC1.0.4.7z") do (
+::    "Resources\7z.exe" x -y -o"Resources\Plazas" "%%I" -aoa && del %%I
+::    )
 
 :closescript
 Title GOODBYE!
+cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
 echo                                    GOODBYE!
@@ -182,9 +225,9 @@ exit
 ::main part end
 
 :updatecomplete
-MODE 70,6
 Title Update Complete
 cls
+MODE 70,6
 echo --------------------------------------------------------------------------------
 echo                              Update Complete!
 echo --------------------------------------------------------------------------------
