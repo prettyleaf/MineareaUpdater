@@ -12,6 +12,6 @@ Put this script in autoruns and restart machine.
 Features:
 - Disables explorer.exe right after boot.
 - MC autorun with system boot.
-- Control trough 1 window.
+- Control through 1 window.
 - Quick commands a.k.a presets.
 - Developer mode if you need to change something. (brings back explorer.exe and etc, so you can access Windows)
