@@ -74,7 +74,7 @@ echo Most of problems you meet are on user's side, so please make sure you're do
 echo everything right, so you don't waste yours and ours time.            
 echo -------------------------------------------------------------------------------
 echo.
-timeout /T 2 >nul | echo 			Please wait 10 sec to continue^!
+timeout /T 10 >nul | echo 			Please wait 10 sec to continue^!
 Resources\cmdMenuSel f870 "                                    Continue" ""
 if %ERRORLEVEL% == 1 goto welcome
 
