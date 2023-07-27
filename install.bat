@@ -183,15 +183,15 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://pixeldrain.com/api/file/A4rbRo1x?download" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-java -jar fabric-installer-0.11.2.jar client -mcversion 1.19.2 
-curl -L  "https://pixeldrain.com/api/file/rn7eHyNJ?download" --ssl-no-revoke --output README.txt
+curl -L  "https://pixeldrain.com/api/file/A4rbRo1x" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+move /y fabric-installer-0.11.2.jar Resources
+curl -L  "https://pixeldrain.com/api/file/rn7eHyNJ" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
-curl -L  "https://pixeldrain.com/api/file/DYp3tQu5?download" --ssl-no-revoke --output fabric.7z
+curl -L  "https://pixeldrain.com/api/file/qXMQ1GdE" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
-move /y Resources\.minecraft %appdata%
+robocopy Resources\.minecraft %appdata%\.minecraft /E /MOVE
 if exist "%appdata%\.minecraft\config\puzzle.json" (
     goto modsinstall
 ) else (
@@ -260,8 +260,10 @@ cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
 echo     Your client is installed, but mods are missing. Launching update.bat...
+echo   Your client is installed, but fabric-loader is missing. Launching java.bat...
 echo     HINT: Click Update Game to install mods and then you can launch game.
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
-start wgnplot.exe "%scriptpath%\update.bat"
+start update.bat
+start java.ps1
 exit
