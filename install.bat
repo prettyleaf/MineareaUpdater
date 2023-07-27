@@ -265,5 +265,5 @@ echo     HINT: Click Update Game to install mods and then you can launch game.
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
 start update.bat
-start java.ps1
+Powershell.exe -executionpolicy remotesigned -File  java.ps1
 exit
