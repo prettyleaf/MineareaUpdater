@@ -208,10 +208,15 @@ MODE 79,20
 echo -------------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo -------------------------------------------------------------------------------
-curl -L  "https://drive.google.com/file/d/10XF5zorbxb-jqPm80HtGn91X6VJq_w9U/view?usp=sharing" --ssl-no-revoke --output MC1.0.4.7z
-::for %%I in ("MC1.0.4.7z") do (
-::    "Resources\7z.exe" x -y -o"Resources\Plazas" "%%I" -aoa && del %%I
-::    )
+curl -L  "https://doc-0s-1g-docs.googleusercontent.com/docs/securesc/90otncegc4652efmedfgtu32vdqoknj0/1e8r9io4ouqgv8apn984jj0coarqd8us/1690437525000/01090204866429553386/01090204866429553386/10XF5zorbxb-jqPm80HtGn91X6VJq_w9U?e=download&ax=AGtFMPW5dQMxvw-PnoXSFChueILHlRMb_nLqaGB_-gmf4wN6n1kuaIm4ouANxzlqjsmFRzV_1Elqw_ddtgxTyJ38BOKIq8rB9QcuM7gWvclfseiKoycb9k5Db145ISXSGosOAf4KYCZLPZRRSm--7fZ0UZSVHQN-WV_GLGJ-8J69YXZBDFSMm1wUvEiEfMdhmZjcuQhgAgdqkbCp9QXIija7udeucbmFT-f3CrapZ2VGb-5S7qBsix1OS_rAiaR69f_n-jbiBhNQ2UgMa5TBt057ePrXC5IRpLRLF3DUXK3V16Fcbd_TeRb8SgbgC2ExLpVQ2wHgKkfeFABokDuKyf4gWkjfmvm914Cy00QyPFNbJ0qQyQwBaHeiKMSD3gwYSarsRktm36rJi4rkyai1cqQlaMPL-QgBBy1KjQjh8Pdgjl4g8cIAKNfIMAzuglXHNu3mKJpNmBeg56hsWeuz467cIV6w2BF1Vhky6C6QSs0uKpObaZ8IUBXqEXX04jcPmlSetWDPgS_YXj0nwL7lnlpjfP3vn7bpZe2qm0j9IwEMNm-7u6Y5j8oH64GQ5uT47YXnzoUZtbvR1kHMvyzl1FBDAa7-rKSW3fz2oKFwXFNv32wKnErQr1Ia9UxLmWFOhf0ymma8_nW1VW-oD6jrDoy8rnAGpAJby_kjTghV4lQK2U79HcnxrQz_9xepGPMx5yEcowHrj_KCVXUE74djaU-d9EWqnnupEWz4V4Gu_pEvw0Kkp3RKnsmOuDG1PmHVlFy6sFoqdr9-VAD11bPExacyJlzGlR2MZq75GL2Oj6gmT7C1-gi9x5SSR9_EXYdqnxTEmxPoBwmfLZ6diRBKcSOUgkSxtEJ4_ydaJ8KmIvaMw_3_ND6Mv3pZ2U_dM4Mab_k&uuid=8e7f2abf-152f-471c-b1ce-ea1bfb74c46b&authuser=0&nonce=gd8jvd89odtl8&user=01090204866429553386&hash=qmkuj3n99nbmo7i4ne4bqf8he821vr20" --ssl-no-revoke --output MC1.0.4.7z
+for %%I in ("MC1.0.4.7z") do (
+    "Resources\7z.exe" x -y -o"Resources\MC1.0.4" "%%I" -aoa && del %%I
+    )
+if exist "%userprofile\.minearea\MC1.0.4" (
+    goto updatecomplete
+) else (
+    goto somethingwentwrong
+)
 
 :closescript
 Title GOODBYE!
@@ -227,9 +232,19 @@ exit
 :updatecomplete
 Title Update Complete
 cls
-MODE 70,6
+MODE 87,10
 echo --------------------------------------------------------------------------------
 echo                              Update Complete!
+echo --------------------------------------------------------------------------------
+Resources\cmdMenuSel f870 "                               Continue"
+if %ERRORLEVEL% == 1 goto mainmenu
+
+:somethingwentwrong
+Title Something went wrong!
+cls
+MODE 87,10
+echo --------------------------------------------------------------------------------
+echo                      Error! Try again later or contact coder.
 echo --------------------------------------------------------------------------------
 Resources\cmdMenuSel f870 "                               Continue"
 if %ERRORLEVEL% == 1 goto mainmenu
