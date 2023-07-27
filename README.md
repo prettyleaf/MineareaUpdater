@@ -1,5 +1,8 @@
 # MineareaUpdater
 Universal tools for client or server minecraft.
+- updater.bat (90%)
+- install.bat (0%)
+- host.bat (10%)
 
 ## Updater
 No need to manually drag mods and update them, because this script does it itself for you.
