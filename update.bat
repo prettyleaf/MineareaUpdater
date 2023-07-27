@@ -195,7 +195,7 @@ cls MODE 79,20
 echo -------------------------------------------------------------------------------
 echo   You're being redirected to our github page to download latest version.
 echo                     You will be redirected in 5 seconds.
-echo               Don't forget to delete outdated updater folder.
+echo                   Don't forget to delete outdated folder.
 echo -------------------------------------------------------------------------------
 timeout 5 >nul
 start "" https://github.com/Rockstar234/MineareaUpdater/releases
