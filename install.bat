@@ -176,7 +176,7 @@ if %ERRORLEVEL% == 3 goto discordserver
 if %ERRORLEVEL% == 4 goto closescript
 
 :installgame
-Title Installing fabric-0.14.2-1.19.2...
+Title Installing client...
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
@@ -185,14 +185,14 @@ echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
 curl -L  "https://pixeldrain.com/api/file/A4rbRo1x?download" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 move /y fabric-installer-0.11.2.jar Resources
-java -jar fabric-installer-0.11.2.jar client -mcversion 1.19.2 
+java -jar %scriptpath%\Resources\fabric-installer-0.11.2.jar client -mcversion 1.19.2 
 curl -L  "https://pixeldrain.com/api/file/rn7eHyNJ?download" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
 curl -L  "https://pixeldrain.com/api/file/DYp3tQu5?download" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
-move /y Resources\.minecraft "%appdata%"
+xcopy /s %scriptpath%\Resources\.minecraft %appdata%
 if exist "%appdata%\.minecraft\config\puzzle.json" (
     goto modsinstall
 ) else (
