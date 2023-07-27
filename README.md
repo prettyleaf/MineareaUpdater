@@ -1,7 +1,7 @@
 # MineareaUpdater
 Universal tools for client or server minecraft.
 - updater.bat (100%)
-- install.bat (85%)
+- install.bat (100%)
 - host.bat (10%)
 
 ## Updater
