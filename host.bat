@@ -112,7 +112,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BYABCQAAAIIeSeH/b3KGAQ==" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )

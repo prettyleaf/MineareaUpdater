@@ -122,7 +122,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BYABCQAAAIIeSeH/b3KGAQ==" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -166,7 +166,7 @@ Title Game Updater
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo Welcome to Game Updater menu. Updater version is 1.0.4. If this version doesn't
+echo Welcome to Game Updater menu. Updater version is 1.0.3. If this version doesn't
 echo match the version in discord, then click Update Client. If version is fine and
 echo you need to update your game, then click Update Game. You can also come back
 echo here after installation and check your version by clicking Version Check button.
@@ -208,12 +208,12 @@ MODE 79,20
 echo -------------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo -------------------------------------------------------------------------------
-curl -L  "https://pixeldrain.com/api/file/3QZNUHem?download" --ssl-no-revoke --output MC1.0.4.7z
-for %%I in ("MC1.0.4.7z") do (
-    "Resources\7z.exe" x -y -o"Resources\MC1.0.4" "%%I" -aoa && del %%I
+curl -L  "https://pixeldrain.com/api/file/3QZNUHem?download" --ssl-no-revoke --output mods.7z
+for %%I in ("mods.7z") do (
+    "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
-move /y Resources\MC1.0.4 %userprofile%\.minearea
-if exist "%userprofile%\.minearea\MC1.0.4" (
+move /y Resources\mods %userprofile%\.minearea
+if exist "%userprofile%\.minearea\mods" (
     goto updatecomplete
 ) else (
     goto somethingwentwrong
