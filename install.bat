@@ -184,7 +184,6 @@ echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
 curl -L  "https://pixeldrain.com/api/file/A4rbRo1x" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-move /y fabric-installer-0.11.2.jar Resources
 curl -L  "https://pixeldrain.com/api/file/rn7eHyNJ" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
 curl -L  "https://pixeldrain.com/api/file/qXMQ1GdE" --ssl-no-revoke --output fabric.7z
