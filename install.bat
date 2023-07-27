@@ -183,10 +183,10 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://pixeldrain.com/api/file/A4rbRo1x" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://pixeldrain.com/api/file/rn7eHyNJ" --ssl-no-revoke --output README.txt
+curl -L  "https://www.mediafire.com/file/iny09htz5hyx08k/fabric-installer-0.11.2.jar/file" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://www.mediafire.com/file/hf7a3b0aqcix0yb/README.txt/file" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
-curl -L  "https://pixeldrain.com/api/file/qXMQ1GdE" --ssl-no-revoke --output fabric.7z
+curl -L  "https://www.mediafire.com/file/a5hobbrlhmz2l3n/fabric.7z/file" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )

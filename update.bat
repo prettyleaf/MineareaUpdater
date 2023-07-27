@@ -210,7 +210,7 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://pixeldrain.com/api/file/QgDc3yey?download" --ssl-no-revoke --output mods.7z
+curl -L  "https://www.mediafire.com/file/ppneycmgedobbgv/mods.7z/file" --ssl-no-revoke --output mods.7z
 for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
