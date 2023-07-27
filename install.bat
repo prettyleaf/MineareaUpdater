@@ -184,15 +184,14 @@ echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
 curl -L  "https://pixeldrain.com/api/file/A4rbRo1x?download" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-move /y fabric-installer-0.11.2.jar Resources
-java -jar %scriptpath%\Resources\fabric-installer-0.11.2.jar client -mcversion 1.19.2 
+java -jar fabric-installer-0.11.2.jar client -mcversion 1.19.2 
 curl -L  "https://pixeldrain.com/api/file/rn7eHyNJ?download" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
 curl -L  "https://pixeldrain.com/api/file/DYp3tQu5?download" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
-xcopy /s %scriptpath%\Resources\.minecraft %appdata%
+move /y Resources\.minecraft %appdata%
 if exist "%appdata%\.minecraft\config\puzzle.json" (
     goto modsinstall
 ) else (
