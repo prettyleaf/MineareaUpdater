@@ -5,7 +5,7 @@ Universal tools for client or server minecraft.
 - host.bat (10%)
 
 ## Install
-Is the file you need to launch first. It download mod loader and then launcher mods downloader/updater.
+Is the file you need to launch first. It downloads mod loader and then launcher mods downloader/updater.
 After all this actions launch your Minecraft Launcher and select Fabric version.
 
 ## Updater
