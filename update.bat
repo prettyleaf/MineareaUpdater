@@ -7,9 +7,7 @@ set local enableextensions
 Color 0F
 
 set scriptpath=%~dp0
-echo I'm located at: %scriptpath%
-Resources\cmdMenuSel f870 "  Continue"
-if %ERRORLEVEL% == 1 goto 7zipcheck
+echo %scriptpath%
 
 ::requirements check
 :7zipcheck
