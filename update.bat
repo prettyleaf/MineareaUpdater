@@ -128,11 +128,6 @@ goto noupdatesfound
 if %errorlevel%==1 (
 goto updatesfound
 )
-::if exist "%userprofile%\.minearea\verify.version" (
-::goto noupdatesfound
-::) else (
-::    goto updatesfound
-::)
 
 :updatesfound
 Title Checking updates...4
