@@ -200,6 +200,7 @@ echo ---------------------------------------------------------------------------
 timeout 5 >nul
 start "" https://github.com/Rockstar234/MineareaUpdater/releases
 exit
+::later add automatic update. yes im crazy mf.
 
 :updategame
 Title Updating game
@@ -207,13 +208,16 @@ cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
 echo                        Trying to update your game...
+echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://pixeldrain.com/api/file/3QZNUHem?download" --ssl-no-revoke --output mods.7z
+curl -L  "https://pixeldrain.com/api/file/QgDc3yey?download" --ssl-no-revoke --output mods.7z
 for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
-move /y Resources\mods %userprofile%\.minearea
-if exist "%userprofile%\.minearea\mods" (
+mkdir %appdata%\.minecraft\mods_backup
+move /y %appdata%\.minecraft\mods %appdata%\.minecraft\mods_backup
+move /y Resources\mods %appdata%\.minecraft
+if exist "%appdata%\.minecraft\mods\Zoomify-2.9.0.jar" (
     goto updatecomplete
 ) else (
     goto somethingwentwrong
