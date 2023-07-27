@@ -9,6 +9,8 @@ Color 0F
 set scriptpath=%~dp0
 echo %scriptpath%
 
+::Idea took from https://github.com/SlejmUr/Manifest_Tool_TB. Thanks for help https://github.com/SlejmUr.
+
 :killexplorer
 taskkill /f /im explorer.exe
 goto 7zipcheck
