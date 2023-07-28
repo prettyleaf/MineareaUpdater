@@ -186,6 +186,8 @@ echo ---------------------------------------------------------------------------
 curl -L  "https://download2263.mediafire.com/vsa8y3tmbw4g6dRdRc-0ewbX5EDONY4NDhkZ5OhCEVSYsAlVHtAaKc8_c3EQbiCwb4pu1ALpqIWY0H4nFz8gIcnOoorX1xDaxgfCdWaBW2Rk9EONUQr2mI7-074hsdB-GEDjyr_znvIi_e7lmqYEL3_Bc79OLkiL60ms-G-zTqyHiA/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 curl -L  "https://download1530.mediafire.com/uoyz6um1xnbg_96dmzt7PwosAKHjeQy9KVunfdeUb2m1q-ZQoEPdY44OvX2DjRUY0zrJd9MV4QwcuF6h_Qn1uTdQKpctmvJzq7QmGi4oNyw2sKrOl9clsgWIgH-cCedDD-WiholFZfZXMbbNz_VVuHecohenjVHpCdEdoyYPXmJxIw/hf7a3b0aqcix0yb/README.txt" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
+curl -L  "https://download854.mediafire.com/q38y9fn2xxwgftsKdJ6XzjNvXS0LoLmotoujX33Hj8FexhGMzfqWYoAiIRWQh47pItBlHzF9EclLzq_l5fiK9_hkrKbmawAk2TUArdh9SktXrLLI3K_CIgijuCnqI-jlNc22_kd78XXJzNwUga1n9e1NGVxu5VHg518T-usGCT658g/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
+move /y servers.dat %appdata%\.minecraft
 curl -L  "https://download1085.mediafire.com/6duwdxztw9bgJosukO3gURM7cwgPamREjpW6pZFD8L7OE8nCl8oZIFoQCV-oSowiaO7PGDU9rpijxV809PIj_FajLRaPDMAjmcFknQRL7eCzNDBnNtPAeenii2FR0bFZYH_I_f1aLYVQymBnchyuJpRWPiqYPx7Gebm7Sy-BEJhtkA/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
