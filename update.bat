@@ -215,8 +215,10 @@ for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
 mkdir %appdata%\.minecraft\mods_backup
-move /y %appdata%\.minecraft\mods %appdata%\.minecraft\mods_backup
-move /y Resources\mods %appdata%\.minecraft
+robocopy %appdata%\.minecraft\mods %appdata%\.minecraft\mods_backup /E /MOVE
+::move /y %appdata%\.minecraft\mods %appdata%\.minecraft\mods_backup
+::move /y Resources\mods %appdata%\.minecraft
+robocopy Resources\mods %appdata%\.minecraft\mods /E /MOVE
 if exist "%appdata%\.minecraft\mods\Zoomify-2.9.0.jar" (
     goto updatecomplete
 ) else (
