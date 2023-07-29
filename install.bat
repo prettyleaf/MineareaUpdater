@@ -294,8 +294,9 @@ echo       You also need to install fabric, so you can launch the game.
 echo  I'll try to do it myself, but if you see error when launch fabric.jar youself.
 echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
 echo --------------------------------------------------------------------------------
+curl -L  "https://download2263.mediafire.com/vsa8y3tmbw4g6dRdRc-0ewbX5EDONY4NDhkZ5OhCEVSYsAlVHtAaKc8_c3EQbiCwb4pu1ALpqIWY0H4nFz8gIcnOoorX1xDaxgfCdWaBW2Rk9EONUQr2mI7-074hsdB-GEDjyr_znvIi_e7lmqYEL3_Bc79OLkiL60ms-G-zTqyHiA/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
-if exist "%appdata%\.minecraft\version\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
+if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
 ) else (
     goto somethingwentwrong
