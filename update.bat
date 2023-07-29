@@ -251,7 +251,9 @@ Title Something went wrong!
 cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
-echo                      Error! Try again later or contact coder.
+echo               Error! Something went wrong. Please report a problem.
 echo --------------------------------------------------------------------------------
+timeout 2 >nul
+start "" https://github.com/Rockstar234/MineareaUpdater/issues
 Resources\cmdMenuSel f870 "                               Continue"
 if %ERRORLEVEL% == 1 goto mainmenu
