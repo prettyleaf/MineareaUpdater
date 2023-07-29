@@ -295,7 +295,7 @@ echo  I'll try to do it myself, but if you see error when launch fabric.jar yous
 echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
 echo --------------------------------------------------------------------------------
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
-if exist "%appdata%\.minecraft\version" (
+if exist "%appdata%\.minecraft\version\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
 ) else (
     goto somethingwentwrong
