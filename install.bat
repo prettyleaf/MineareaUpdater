@@ -120,6 +120,8 @@ if exist "%appdata%\.minecraft" (
 :createminecraft
 Title Creating minecraft folder...
 mkdir "%appdata%\.minecraft"
+mkdir "%appdata%\.minecraft\mods"
+mkdir "%appdata%\.minecraft\versions"
 goto minecraftcheck
 
 :getVer
