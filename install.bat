@@ -184,11 +184,12 @@ echo doesn't match the version in discord, then click Update Client. If version 
 echo fine and you need to update your game, then click Update Game. You can also come
 echo back here after installation and check your version by clicking Version Check button.
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Install Game" "  Update Client" "  Discord Server" "  Exit"
+Resources\cmdMenuSel f870 "  Install Game" "  Update Client" "  Install Fabric" "  Discord Server" "  Exit"
 if %ERRORLEVEL% == 1 goto installgame
 if %ERRORLEVEL% == 2 goto updateclient
-if %ERRORLEVEL% == 3 goto discordserver
-if %ERRORLEVEL% == 4 goto closescript
+if %ERRORLEVEL% == 3 goto fabricinstall
+if %ERRORLEVEL% == 4 goto discordserver
+if %ERRORLEVEL% == 5 goto closescript
 
 :installgame
 Title Installing client...
@@ -278,10 +279,25 @@ cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
 echo     Your client is installed, but mods are missing. Launching update.bat...
-echo   Your client is installed, but fabric-loader is missing. Launching java.bat...
 echo     HINT: Click Update Game to install mods and then you can launch game.
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
 start update.bat
+goto fabricinstall
+
+:fabricinstall
+Title Fabric client install
+cls
+MODE 87,10
+echo --------------------------------------------------------------------------------
+echo       You also need to install fabric, so you can launch the game.
+echo  I'll try to do it myself, but if you see error when launch fabric.jar youself.
+echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
+echo --------------------------------------------------------------------------------
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
-exit
+if exist "%appdata%\.minecraft\version" (
+    goto downloadcomplete
+) else (
+    goto somethingwentwrong
+    start fabric-installer-0.11.2.jar
+)
