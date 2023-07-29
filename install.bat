@@ -99,7 +99,7 @@ if %ERRORLEVEL% == 1 goto foldercheck
 :foldercheck
 Title Checking updates...1
 if exist "%userprofile%\.minearea" (
-goto getVer
+goto createminecraft
 ) else (
     goto foldercreate
 )
@@ -108,6 +108,19 @@ goto getVer
 Title Creating folder...
 mkdir "%userprofile%\.minearea"
 goto foldercheck
+
+:minecraftcheck
+Title Checking minecraft folder...
+if exist "%appdata%\.minecraft" (
+    goto getVer
+) else (
+    goto createminecraft
+)
+
+:createminecraft
+Title Creating minecraft folder...
+mkdir "%appdata%\.minecraft"
+goto minecraftcheck
 
 :getVer
 Title Checking updates...2
