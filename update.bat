@@ -171,9 +171,9 @@ echo match the version in discord, then click Update Client. If version is fine 
 echo you need to update your game, then click Update Game. You can also come back
 echo here after installation and check your version by clicking Version Check button.
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Update Client" "  Update Game" "  Discord Server" "  Exit"
-if %ERRORLEVEL% == 1 goto updateclient
-if %ERRORLEVEL% == 2 goto updategame
+Resources\cmdMenuSel f870 "  Update Game" "  Update Client" "  Discord Server" "  Exit"
+if %ERRORLEVEL% == 1 goto updategame
+if %ERRORLEVEL% == 2 goto updateclient
 if %ERRORLEVEL% == 3 goto discordserver
 if %ERRORLEVEL% == 4 goto closescript
 
