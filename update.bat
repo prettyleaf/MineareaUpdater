@@ -72,28 +72,20 @@ goto timeout
 :timeout
 Title Almost done...
 cls
-MODE 87,10
+MODE 87,21
 echo -------------------------------------------------------------------------------
+echo       DO NOT RESIZE THIS WINDOW ESPECIALLY IF YOURE USING WINDOWS 11
+echo.
 echo If you have got a problem/issue, please report it back in our discord server.
 echo Most of problems you meet are on user's side, so please make sure you're doing
-echo everything right, so you don't waste your and our time.            
+echo everything right, so you don't waste your and our time.
+echo.
+echo       DO NOT RESIZE THIS WINDOW ESPECIALLY IF YOURE USING WINDOWS 11
 echo -------------------------------------------------------------------------------
 echo.
 timeout /T 10 >nul | echo 			Please wait 10 sec to continue^!
 Resources\cmdMenuSel f870 "                                    Continue"
-if %ERRORLEVEL% == 1 goto welcome
-
-::welcome screen
-:welcome
-Title Looking for Minearea updates...
-cls
-MODE 81,10
-echo -------------------------------------------------------------------------------
-echo Updater needs to check for updates first. Click the button below to start.
-echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "                                    Continue"
 if %ERRORLEVEL% == 1 goto foldercheck
-::welcome screen end
 
 ::check for updates
 :foldercheck
@@ -122,7 +114,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BYABCQAAAIIeSeH/b3KGAQ==" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BYAxCQAAAMIaDcXD/s1GCeMC" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -135,20 +127,14 @@ goto updatesfound
 Title Checking updates...4
 cls
 MODE 87,17
-call :colorEcho c0 "-------------------------------------------------------------------------------"
-echo.
-call :colorEcho c0 "   Your updater is outdated and it downloads wrong MC modpack. Please update."
-echo.
-call :colorEcho c0 "                             Redirecting you..."
-echo.
-call :colorEcho c0 "               Don't forget to delete outdated updater folder."
-echo. 
-call :colorEcho c0 "-------------------------------------------------------------------------------"
+echo -------------------------------------------------------------------------------
+echo  Your dowloader is outdated and it downloads wrong MC modpack. Please update.
+echo                             Redirecting you...
+echo              Don't forget to delete outdated downloader folder.
+echo -------------------------------------------------------------------------------
 timeout 5 >nul
 start "" https://github.com/Rockstar234/MineareaUpdater/releases
 exit 
-
-::robocopy %userprofile%\Desktop\MineareaUpdater\Resources "%userprofile%\.minearea" verify.version /mt /z /is /it /im
 
 :noupdatesfound
 Title Verify complete
@@ -156,9 +142,124 @@ cls
 echo -------------------------------------------------------------------------------
 echo                        Your updater is up to date.
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "                                    Continue"
-if %ERRORLEVEL% == 1 goto mainmenu
+timeout 2 >nul
+goto welcome
 ::check for updates end
+
+::welcome screen
+:welcome
+Title Select one of options...
+cls
+MODE 87,17
+echo -------------------------------------------------------------------------------
+echo                         What launcher do you use?
+echo -------------------------------------------------------------------------------
+Resources\cmdMenuSel f870 "  Minecraft Launcher" "  PrismLauncher (not portable)" "  TLauncher" "  CurseForge (work in progress)" "  Not listed here"
+if %ERRORLEVEL% == 1 goto minecraftcheck
+if %ERRORLEVEL% == 2 goto prismcheck
+if %ERRORLEVEL% == 3 goto tlaunchercheck
+if %ERRORLEVEL% == 4 goto launchercurseforge
+if %ERRORLEVEL% == 5 goto notlistedcheck
+
+:launcherminecraft
+Title Minecraft Launcher was selected as default launcher...
+cls
+MODE 81,10
+set launcherpath=%appdata%\.minecraft
+goto mainmenu
+
+:minecraftcheck
+Title Checking minecraft folder...
+if exist "%appdata%\.minecraft" (
+    goto launcherminecraft
+) else (
+    goto createminecraft
+)
+
+:createminecraft
+Title Creating minecraft folder...
+mkdir "%appdata%\.minecraft"
+mkdir "%appdata%\.minecraft\mods"
+mkdir "%appdata%\.minecraft\versions"
+goto minecraftcheck
+
+:launcherprism
+Title PrismLauncher was selected as default launcher...
+cls
+MODE 81,10
+set launcherpath=%appdata%\PrismLauncher\instances\1.19.2\.minecraft
+goto mainmenu
+
+:prismcheck
+Title Checking Prism folders...
+if exist "%appdata%\PrismLauncher\instances\1.19.2\.minecraft" (
+    goto launcherprism
+) else (
+    goto prismcreate
+)
+
+:prismcreate
+Title Creating Prism folders...
+mkdir "%appdata%\PrismLauncher\instances\1.19.2"
+mkdir "%appdata%\PrismLauncher\instances\1.19.2\.minecraft"
+goto prismcheck
+
+:launchertlauncher
+Title TLauncher was selected as default launcher...
+cls
+MODE 81,10
+set launcherpath=%appdata%\.minecraft
+goto mainmenu
+
+:tlaunchercheck
+Title Checking minecraft folder...
+if exist "%appdata%\.minecraft" (
+    goto launchertlauncher
+) else (
+    goto createtlauncher
+)
+
+:createtlauncher
+Title Creating minecraft folder...
+mkdir "%appdata%\.minecraft"
+mkdir "%appdata%\.minecraft\mods"
+mkdir "%appdata%\.minecraft\versions"
+goto tlaunchercheck
+
+:launchercurseforge
+Title Minecraft Launcher was selected as default launcher...
+cls
+MODE 81,10
+mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
+mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
+mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
+curl -L  "https://download847.mediafire.com/ev7qvxd6q0mgFUJVqUnUUTN_K3yN_5D5IoqfsWrGdxwR7a2La9EOkJXY4aHialyeIomXvWAECA_db9v3f2pYNznMK5uXBNOS2eCjUBcL5WnCpLalEZqpHgHFZO_2b-bxk3UmhyA63SBcUsi7KrCgdfNMQwcJQWv8VgRkVN2acCZs/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
+set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
+goto mainmenu
+
+:launchernotlisted
+Title Default launcher settings were selected...
+cls
+MODE 81,10
+set launcherpath=%appdata%\.minecraft
+goto mainmenu
+
+:notlistedcheck
+Title Checking minecraft folder...
+if exist "%appdata%\.minecraft" (
+    goto launchernotlisted
+) else (
+    goto createnotlisted
+)
+
+:createnotlisted
+Title Creating minecraft folder...
+mkdir "%appdata%\.minecraft"
+mkdir "%appdata%\.minecraft\mods"
+mkdir "%appdata%\.minecraft\versions"
+goto notlistedcheck
+::welcome screen end
 
 ::main part
 :mainmenu
@@ -214,12 +315,10 @@ curl -L  "https://download1590.mediafire.com/u4evtsj5digg24dJ6Z94RGFhWMAe8s_0irX
 for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
-mkdir %appdata%\.minecraft\mods_backup
-robocopy %appdata%\.minecraft\mods %appdata%\.minecraft\mods_backup /E /MOVE
-::move /y %appdata%\.minecraft\mods %appdata%\.minecraft\mods_backup
-::move /y Resources\mods %appdata%\.minecraft
-robocopy Resources\mods %appdata%\.minecraft\mods /E /MOVE
-if exist "%appdata%\.minecraft\mods\Zoomify-2.9.0.jar" (
+mkdir %launcherpath%\mods_backup
+robocopy %launcherpath%\mods %launcherpath%\mods_backup /E /MOVE
+robocopy Resources\mods %launcherpath%\mods /E /MOVE
+if exist "%launcherpath%\mods\Zoomify-2.9.0.jar" (
     goto updatecomplete
 ) else (
     goto somethingwentwrong
@@ -253,7 +352,10 @@ MODE 87,10
 echo --------------------------------------------------------------------------------
 echo               Error! Something went wrong. Please report a problem.
 echo --------------------------------------------------------------------------------
-timeout 2 >nul
-start "" https://github.com/Rockstar234/MineareaUpdater/issues
-Resources\cmdMenuSel f870 "                               Continue"
+Resources\cmdMenuSel f870 "                               Continue" "                            Report an issue"
 if %ERRORLEVEL% == 1 goto mainmenu
+if %ERRORLEVEL% == 2 goto reportissue
+
+:reportissue
+start "" https://github.com/Rockstar234/MineareaUpdater/issues
+goto mainmenu

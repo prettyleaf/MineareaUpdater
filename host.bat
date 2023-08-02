@@ -112,7 +112,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BYABCQAAAIIeSeH/b3KGAQ==" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BYAxCQAAAMIaDcXD/s1GCeMC" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -125,18 +125,14 @@ goto updatesfound
 Title Checking updates...4
 cls
 MODE 87,17
-call :colorEcho c0 "-------------------------------------------------------------------------------"
-echo.
-call :colorEcho c0 "   Your tool is outdated and it uses outdated server files. Please update."
-echo.
-call :colorEcho c0 "                             Redirecting you..."
-echo.
-call :colorEcho c0 "        Don't forget to backup important files like world and player-data."
-echo. 
-call :colorEcho c0 "-------------------------------------------------------------------------------"
+echo -------------------------------------------------------------------------------
+echo  Your dowloader is outdated and it downloads wrong MC modpack. Please update.
+echo                             Redirecting you...
+echo              Don't forget to delete outdated downloader folder.
+echo -------------------------------------------------------------------------------
 timeout 5 >nul
 start "" https://github.com/Rockstar234/MineareaUpdater/releases
-exit 
+exit  
 
 :noupdatesfound
 Title Verify complete
