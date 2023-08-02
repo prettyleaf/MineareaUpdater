@@ -199,12 +199,12 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://www.mediafire.com/file/iny09htz5hyx08k/fabric-installer-0.11.2.jar/file" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://www.mediafire.com/file/hf7a3b0aqcix0yb/README.txt/file" --ssl-no-revoke --output README.txt
+curl -L  "https://download2263.mediafire.com/s10ruimaf7sgARweIZqAXqt6JOXVzcYtCKsydA4QYFnPVKtn6VBkqvfrIbQpIBdcGofNHxH8NfRih_7WzGF4q238Lxlaro_CmEbf0xnlgITs0Sq7zYS6QSGNlmrEPLlT5JPj8eKgQoOoVC_jfk2oBsmY3wLoWnoqAlq2_coJWhwr/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://download1530.mediafire.com/ilyha5393nig1nPDstyMQtlJJrxuSqrWhZ-eikj5niWknsfjwO46tBWu39JvvYrA9ZuwMhRqo3okdTXWd3jEh46SvSRanup4nWaEhVBuCXYnPKv2YfTVbvaQ_nC0XAUzPE4MNQvMAF7zbqRhUN_VL1eJtOFEq9kURhkKRjL2INfB/hf7a3b0aqcix0yb/README.txt" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
-curl -L  "https://www.mediafire.com/file/8ef2ef4mmwtzqou/servers.dat/file" --ssl-no-revoke --output servers.dat
+curl -L  "https://download854.mediafire.com/0o30xuhkbe8gK-gQcYC8MObOmu4gg442ogDp5SjfV-kCeOFGUQypaPzEbkT1d_3AswOp7oR5Ks9F3JGXgwtIOUpYJWg3IpyAus1APgnI5eXUDtiLCyvx0Yo3Ju7-s0o7-PuS9flhis0IZTqNQw1UBrFDTzmsTFd_CnUAd12cHwae/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
 move /y servers.dat %appdata%\.minecraft
-curl -L  "https://www.mediafire.com/file/a5hobbrlhmz2l3n/fabric.7z/file" --ssl-no-revoke --output fabric.7z
+curl -L  "https://download1085.mediafire.com/7jl2kyoxgjwgtNdg1E_wQgnOV6gWmxii_IlP7GoIIzlfb3Y7JZEfBPH5_0_8_uvAL26JRUT8YIJplJiX3KjpdbVIosZgMjgHSMRvV7yIpS4NPSdxYgzX-GL5YP4y-E8Aifpz6srrSaupj-FcifEiNj63JRidfGJf0YeMzpzHveuR/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
@@ -294,7 +294,7 @@ echo       You also need to install fabric, so you can launch the game.
 echo  I'll try to do it myself, but if you see error when launch fabric.jar youself.
 echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
 echo --------------------------------------------------------------------------------
-curl -L  "https://www.mediafire.com/file/iny09htz5hyx08k/fabric-installer-0.11.2.jar/file" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://download2263.mediafire.com/s10ruimaf7sgARweIZqAXqt6JOXVzcYtCKsydA4QYFnPVKtn6VBkqvfrIbQpIBdcGofNHxH8NfRih_7WzGF4q238Lxlaro_CmEbf0xnlgITs0Sq7zYS6QSGNlmrEPLlT5JPj8eKgQoOoVC_jfk2oBsmY3wLoWnoqAlq2_coJWhwr/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
