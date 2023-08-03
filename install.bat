@@ -115,8 +115,8 @@ goto versioncheck
 :versioncheck
 Title Checking updates...3
 ::BYABCQAAAIIeSeH/b3KGAQ== old
-::BYAxCQAAAMIaDcXD/s1GCeMC new
-findstr /m "BYAxCQAAAMIaDcXD/s1GCeMC" %userprofile%\.minearea\version.verify >Nul
+::BYAxCQAAAMIaDcXL/sVGCeMC new
+findstr /m "BYAxCQAAAMIaDcXL/sVGCeMC" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
