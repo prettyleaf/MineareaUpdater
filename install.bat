@@ -235,7 +235,7 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://download847.mediafire.com/2r64r6w5qhogDJpLHOn5xKgqsmZ0FXv1z5scYuQeGXdwssAcDJ_XRTTptJqa0Vw_R6i_wSODfdcWc0McIZSYeIVvpNQp-K01tBphYKB3Dz6GjRA8fl4M2UpQH7pkhhAqC2Syo98DcMj6yV6F9lmYnKWoKekMPmd46hYxqVDu8Dgi/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://getmega.net/download/file_b5f5cf2efa/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
@@ -289,12 +289,12 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download2263.mediafire.com/hdfgw4flb1fg56a1PHGRwKfPEj3sy4XsHjSzLQBTfXc9FB0qiJeNHfH0X_fBj36WSw61J-wzkxccTfcEeznuK3nRFF88s13PbMeJwkJwePCPCrlx6V6jYkpblFCeZfP10GhrE1lHL5g0SjYnih-B4wuTW3PXX7wd9gdZgqljoAXf/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://download1530.mediafire.com/ah2wros1u9wgsl_sMWMzBAXRyaOJJD2S7c1XHeBYXfH_L78NepoOheIc6FdqbdX8il_nCKA5LuY2S1v6l8fdKEMfRoPMfYuJT3fe48J5X019co1HWFG6_i0L72fcEk3K66ibyQnir0UlF4qiPLyljXrzAd6BXT_eLVU9vvR8dRLQ/hf7a3b0aqcix0yb/README.txt" --ssl-no-revoke --output README.txt
+curl -L  "https://getmega.net/download/file_f8a298e064/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://getmega.net/download/file_be9b567a73/README.txt" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
-curl -L  "https://download854.mediafire.com/adf64f4ivcsg30tH35emdOWjHnBlysZ-FfgZW3R9sVPhe2MTv78MCaKD1hO__fVd69rCJoVp0Z2YXV1BYgDEavEbTZCiqO3PrVMXnBPMyKJj9ERCpJmiZ3gTlXqMbIOlCjcprYPmMTDvLcIWdNTBLsX0vZYyU4S7bw93zRaIIFLp/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
+curl -L  "https://getmega.net/download/file_b4a99259d9/servers.dat" --ssl-no-revoke --output servers.dat
 move /y servers.dat %launcherpath%
-curl -L  "https://download1503.mediafire.com/w3iqrhd7vbegCB4JEVHah8MPjauR-rxxMHBO-cGnvn6eCgz_5FA_3WGQlALYH0Fcard6BkU7KGRpZWku3MaN3rifIX3Lf3hd11B3Vtj3IbLeQId1nN4TFPNfK26nxRSa51sKvNJYiBe5JkyS6_RjPsGP3KQ6dX4G_0u0Pg8VQSWw/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
+curl -L  "https://getmega.net/download/file_12191269c7/fabric.7z" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
@@ -389,7 +389,7 @@ echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
 echo If you're using PrismLauncher, CurseForge or Not Listed launcher skip this
 echo because you install fabric by using your launcher.
 echo --------------------------------------------------------------------------------
-curl -L  "https://download2263.mediafire.com/hdfgw4flb1fg56a1PHGRwKfPEj3sy4XsHjSzLQBTfXc9FB0qiJeNHfH0X_fBj36WSw61J-wzkxccTfcEeznuK3nRFF88s13PbMeJwkJwePCPCrlx6V6jYkpblFCeZfP10GhrE1lHL5g0SjYnih-B4wuTW3PXX7wd9gdZgqljoAXf/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://getmega.net/download/file_f8a298e064/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete

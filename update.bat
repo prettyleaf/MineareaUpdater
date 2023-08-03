@@ -233,7 +233,7 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://download847.mediafire.com/2r64r6w5qhogDJpLHOn5xKgqsmZ0FXv1z5scYuQeGXdwssAcDJ_XRTTptJqa0Vw_R6i_wSODfdcWc0McIZSYeIVvpNQp-K01tBphYKB3Dz6GjRA8fl4M2UpQH7pkhhAqC2Syo98DcMj6yV6F9lmYnKWoKekMPmd46hYxqVDu8Dgi/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://getmega.net/download/file_b5f5cf2efa/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
@@ -311,7 +311,7 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download1531.mediafire.com/3xeq3x9f8nwg6zN9HdyVUrsgdr1H9Tx5s42vof3Id9Immk2fizzL-iS-Qp6xSaenziBW8UOC8Ayftueo3aXTMbiE7y1RMgSs2RfSBodzS-KPZHpyQoENbwH8sOioNMKmd78p7F4xXWqmMwiFHGbmzf167mRjhFJbcB4tol0lqcL0/ppneycmgedobbgv/mods.7z" --ssl-no-revoke --output mods.7z
+curl -L  "https://getmega.net/download/file_1e8ef98f5b/mods.7z" --ssl-no-revoke --output mods.7z
 for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
