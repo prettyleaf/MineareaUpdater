@@ -235,7 +235,7 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://download847.mediafire.com/ev7qvxd6q0mgFUJVqUnUUTN_K3yN_5D5IoqfsWrGdxwR7a2La9EOkJXY4aHialyeIomXvWAECA_db9v3f2pYNznMK5uXBNOS2eCjUBcL5WnCpLalEZqpHgHFZO_2b-bxk3UmhyA63SBcUsi7KrCgdfNMQwcJQWv8VgRkVN2acCZs/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://download847.mediafire.com/2r64r6w5qhogDJpLHOn5xKgqsmZ0FXv1z5scYuQeGXdwssAcDJ_XRTTptJqa0Vw_R6i_wSODfdcWc0McIZSYeIVvpNQp-K01tBphYKB3Dz6GjRA8fl4M2UpQH7pkhhAqC2Syo98DcMj6yV6F9lmYnKWoKekMPmd46hYxqVDu8Dgi/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
@@ -289,12 +289,12 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download2263.mediafire.com/s10ruimaf7sgARweIZqAXqt6JOXVzcYtCKsydA4QYFnPVKtn6VBkqvfrIbQpIBdcGofNHxH8NfRih_7WzGF4q238Lxlaro_CmEbf0xnlgITs0Sq7zYS6QSGNlmrEPLlT5JPj8eKgQoOoVC_jfk2oBsmY3wLoWnoqAlq2_coJWhwr/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://download1530.mediafire.com/ilyha5393nig1nPDstyMQtlJJrxuSqrWhZ-eikj5niWknsfjwO46tBWu39JvvYrA9ZuwMhRqo3okdTXWd3jEh46SvSRanup4nWaEhVBuCXYnPKv2YfTVbvaQ_nC0XAUzPE4MNQvMAF7zbqRhUN_VL1eJtOFEq9kURhkKRjL2INfB/hf7a3b0aqcix0yb/README.txt" --ssl-no-revoke --output README.txt
+curl -L  "https://download2263.mediafire.com/hdfgw4flb1fg56a1PHGRwKfPEj3sy4XsHjSzLQBTfXc9FB0qiJeNHfH0X_fBj36WSw61J-wzkxccTfcEeznuK3nRFF88s13PbMeJwkJwePCPCrlx6V6jYkpblFCeZfP10GhrE1lHL5g0SjYnih-B4wuTW3PXX7wd9gdZgqljoAXf/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://download1530.mediafire.com/ah2wros1u9wgsl_sMWMzBAXRyaOJJD2S7c1XHeBYXfH_L78NepoOheIc6FdqbdX8il_nCKA5LuY2S1v6l8fdKEMfRoPMfYuJT3fe48J5X019co1HWFG6_i0L72fcEk3K66ibyQnir0UlF4qiPLyljXrzAd6BXT_eLVU9vvR8dRLQ/hf7a3b0aqcix0yb/README.txt" --ssl-no-revoke --output README.txt
 move /y README.txt Resources
-curl -L  "https://download854.mediafire.com/0o30xuhkbe8gK-gQcYC8MObOmu4gg442ogDp5SjfV-kCeOFGUQypaPzEbkT1d_3AswOp7oR5Ks9F3JGXgwtIOUpYJWg3IpyAus1APgnI5eXUDtiLCyvx0Yo3Ju7-s0o7-PuS9flhis0IZTqNQw1UBrFDTzmsTFd_CnUAd12cHwae/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
+curl -L  "https://download854.mediafire.com/adf64f4ivcsg30tH35emdOWjHnBlysZ-FfgZW3R9sVPhe2MTv78MCaKD1hO__fVd69rCJoVp0Z2YXV1BYgDEavEbTZCiqO3PrVMXnBPMyKJj9ERCpJmiZ3gTlXqMbIOlCjcprYPmMTDvLcIWdNTBLsX0vZYyU4S7bw93zRaIIFLp/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
 move /y servers.dat %launcherpath%
-curl -L  "https://download1085.mediafire.com/7jl2kyoxgjwgtNdg1E_wQgnOV6gWmxii_IlP7GoIIzlfb3Y7JZEfBPH5_0_8_uvAL26JRUT8YIJplJiX3KjpdbVIosZgMjgHSMRvV7yIpS4NPSdxYgzX-GL5YP4y-E8Aifpz6srrSaupj-FcifEiNj63JRidfGJf0YeMzpzHveuR/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
+curl -L  "https://download1503.mediafire.com/w3iqrhd7vbegCB4JEVHah8MPjauR-rxxMHBO-cGnvn6eCgz_5FA_3WGQlALYH0Fcard6BkU7KGRpZWku3MaN3rifIX3Lf3hd11B3Vtj3IbLeQId1nN4TFPNfK26nxRSa51sKvNJYiBe5JkyS6_RjPsGP3KQ6dX4G_0u0Pg8VQSWw/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
@@ -389,7 +389,7 @@ echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
 echo If you're using PrismLauncher, CurseForge or Not Listed launcher skip this
 echo because you install fabric by using your launcher.
 echo --------------------------------------------------------------------------------
-curl -L  "https://download2263.mediafire.com/s10ruimaf7sgARweIZqAXqt6JOXVzcYtCKsydA4QYFnPVKtn6VBkqvfrIbQpIBdcGofNHxH8NfRih_7WzGF4q238Lxlaro_CmEbf0xnlgITs0Sq7zYS6QSGNlmrEPLlT5JPj8eKgQoOoVC_jfk2oBsmY3wLoWnoqAlq2_coJWhwr/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://download2263.mediafire.com/hdfgw4flb1fg56a1PHGRwKfPEj3sy4XsHjSzLQBTfXc9FB0qiJeNHfH0X_fBj36WSw61J-wzkxccTfcEeznuK3nRFF88s13PbMeJwkJwePCPCrlx6V6jYkpblFCeZfP10GhrE1lHL5g0SjYnih-B4wuTW3PXX7wd9gdZgqljoAXf/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
