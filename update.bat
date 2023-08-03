@@ -70,7 +70,7 @@ goto timeout
 ::requirements check end
 
 :timeout
-Title Almost done...
+Title Launching updater...
 cls
 MODE 87,21
 echo -------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BYAxCQAAAMIaDcXL/sVGCeMC" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BYABCQAAAIIeSdL/byLjaA==" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -170,7 +170,7 @@ goto mainmenu
 
 :minecraftcheck
 Title Checking minecraft folder...
-if exist "%appdata%\.minecraft" (
+if exist "%appdata%\.minecraft\mods" (
     goto launcherminecraft
 ) else (
     goto createminecraft
@@ -233,7 +233,7 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://getmega.net/download/file_b5f5cf2efa/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://download847.mediafire.com/okt1j1iculsgMwqOypnW6Pd7EB6jFQtj1OtqH0LoLnyf3CDYq20aLgTZcFzgn2hDqjjwkVgMa_SNSidBTrnXtbi45xXJ-DC0rzqA8mJ10eJHc4SUVqTBCCmQy5sMi2pL2kdEsN7n54FTNpmDzdz6ZTMxD2PQRz8ARBKvOf3qsqX7Ykqg/51p3udy0qni2ci7/minearea2k20_avatar.jpg"           id="downloadButton" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
@@ -311,7 +311,7 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://getmega.net/download/file_1e8ef98f5b/mods.7z" --ssl-no-revoke --output mods.7z
+curl -L  "https://download1531.mediafire.com/i37fx2b08ibgwuby9MVUGjD5--2zJcxbCArhSVuy46rCwWzWXZiCpCZuhGsstgxge5I9ITNGFMmDhyKhNjgD8V2987HInrbPDUQqDVizKU5Lew6dVkLQFN5BnJlFR7EpTrg0r5e6Xs0pJwQg_uU-qRqsKH1ZIPQca4-brllHhXJTZ2c_/ppneycmgedobbgv/mods.7z"           id="downloadButton" --ssl-no-revoke --output mods.7z
 for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
