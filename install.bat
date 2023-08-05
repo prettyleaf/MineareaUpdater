@@ -387,7 +387,7 @@ echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
 echo If you're using PrismLauncher, CurseForge or Not Listed launcher skip this
 echo because you install fabric by using your launcher.
 echo --------------------------------------------------------------------------------
-curl -L  "https://download2263.mediafire.com/hsh7fts4htmgFt2Q-KfNuOX7ilARGI7k6QQTblmyODot68sUBhtTxY__EC-w74uaydMctcVPN8Xry4YVFKGsFzq2tQ5ImrhtFbES-mhOInkj7jDljBArFng8VO7pckVgCUt2HK326_97fBvx1dV2m353bJzYPaemiBCt408XplPdEV8/iny09htz5hyx08k/fabric-installer-0.11.2.jar"           id="downloadButton" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://download1590.mediafire.com/j4gjtls0djtgjvECZEsK0VjAIQhcU5w6dlEwpf5TKr-skD3hRo_4_sdssYh4nn80Zr1xmIbbRzQ6N-XJ7HrTDg9RicVtwI8uAUNVkcDIUuAr7D8xDUhAwqHhMNfST7NIoCzqixyP_XmCgJGUn3Z8Dj4CquEd22Uh1-ffBH3JdrnQ/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
