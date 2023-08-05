@@ -233,7 +233,7 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://download847.mediafire.com/okt1j1iculsgMwqOypnW6Pd7EB6jFQtj1OtqH0LoLnyf3CDYq20aLgTZcFzgn2hDqjjwkVgMa_SNSidBTrnXtbi45xXJ-DC0rzqA8mJ10eJHc4SUVqTBCCmQy5sMi2pL2kdEsN7n54FTNpmDzdz6ZTMxD2PQRz8ARBKvOf3qsqX7Ykqg/51p3udy0qni2ci7/minearea2k20_avatar.jpg"           id="downloadButton" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://download847.mediafire.com/4f69ny3ey9fgfXKmDyalkNndLk56ohur6I4pGhJzqDbN4FiKet5oAvMf0GXAo3ObzEzKBJqu1t_KrwpQcTOHqzTt41LnZw6D3SP9I8B8K5rPzeMbHVLHaEA5IPwt2xs-2YcruU-Qs_7I93i7ZmKkvX9RlK6n6G73KpQhk7-hb_-b/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
@@ -311,7 +311,7 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download1531.mediafire.com/i37fx2b08ibgwuby9MVUGjD5--2zJcxbCArhSVuy46rCwWzWXZiCpCZuhGsstgxge5I9ITNGFMmDhyKhNjgD8V2987HInrbPDUQqDVizKU5Lew6dVkLQFN5BnJlFR7EpTrg0r5e6Xs0pJwQg_uU-qRqsKH1ZIPQca4-brllHhXJTZ2c_/ppneycmgedobbgv/mods.7z"           id="downloadButton" --ssl-no-revoke --output mods.7z
+curl -L  "https://download1531.mediafire.com/ndfqp7jajtigEkxR2Pp3uRLLi4S9cqZAfa0V20T3jPONyBlyaMsguucSn7WKvXfka2Y5ZvUQO6UXEf_bHpoQrzZcYbXwYAFhleDHgAGBxDEuaNnLbY6S9FtcOff6Fe-cMOboXW7TLpJs4n-2FCCRz_9qJfuiD4TUQ1FihT5ArQtn/ppneycmgedobbgv/mods.7z" --ssl-no-revoke --output mods.7z
 for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )

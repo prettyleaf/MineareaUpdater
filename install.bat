@@ -235,7 +235,7 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://download847.mediafire.com/okt1j1iculsgMwqOypnW6Pd7EB6jFQtj1OtqH0LoLnyf3CDYq20aLgTZcFzgn2hDqjjwkVgMa_SNSidBTrnXtbi45xXJ-DC0rzqA8mJ10eJHc4SUVqTBCCmQy5sMi2pL2kdEsN7n54FTNpmDzdz6ZTMxD2PQRz8ARBKvOf3qsqX7Ykqg/51p3udy0qni2ci7/minearea2k20_avatar.jpg"           id="downloadButton" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://download847.mediafire.com/4f69ny3ey9fgfXKmDyalkNndLk56ohur6I4pGhJzqDbN4FiKet5oAvMf0GXAo3ObzEzKBJqu1t_KrwpQcTOHqzTt41LnZw6D3SP9I8B8K5rPzeMbHVLHaEA5IPwt2xs-2YcruU-Qs_7I93i7ZmKkvX9RlK6n6G73KpQhk7-hb_-b/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
@@ -289,12 +289,10 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download2263.mediafire.com/hsh7fts4htmgFt2Q-KfNuOX7ilARGI7k6QQTblmyODot68sUBhtTxY__EC-w74uaydMctcVPN8Xry4YVFKGsFzq2tQ5ImrhtFbES-mhOInkj7jDljBArFng8VO7pckVgCUt2HK326_97fBvx1dV2m353bJzYPaemiBCt408XplPdEV8/iny09htz5hyx08k/fabric-installer-0.11.2.jar"           id="downloadButton" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://download1530.mediafire.com/s5jvk4f6d1ogrFjV7Zrrl8726Z8UMrReLnzyMrMQuTbWAM-2SMbWAOjjJCRPFwoEaBAl7N5kucX4ZMbs-NNHKm67aeQrxpwYVVXarlZshxEr_ORulZYEnNMW63A88vV0iaTc2KoMTY8H3UBJsVlrHfjXCpk9_4VmGwEcTfhu5DER-0M1/hf7a3b0aqcix0yb/README.txt"           id="downloadButton" --ssl-no-revoke --output README.txt
-move /y README.txt Resources
-curl -L  "https://download854.mediafire.com/2nmpk45awingysF0WfT1FcTofGV-NAGVtZtjhqkTjv2ZhjGC6qf7o3a8YFZCRzs4tlFgyZs2XFJlpJ8f-6Dj5AEjwAjwx4UllBnKo56L0D4MIqRpFXWxaxp8bY5zfypnsKSyJtZNfRvAZ8_-L5i74qjRtc-7irZqQcsvYf1TWZa1CgY/8ef2ef4mmwtzqou/servers.dat"           id="downloadButton" --ssl-no-revoke --output servers.dat
+curl -L  "https://download1590.mediafire.com/j4gjtls0djtgjvECZEsK0VjAIQhcU5w6dlEwpf5TKr-skD3hRo_4_sdssYh4nn80Zr1xmIbbRzQ6N-XJ7HrTDg9RicVtwI8uAUNVkcDIUuAr7D8xDUhAwqHhMNfST7NIoCzqixyP_XmCgJGUn3Z8Dj4CquEd22Uh1-ffBH3JdrnQ/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://download854.mediafire.com/hny2v65icdkgQ-DgBoUobPqj0urqu03klmZ1vZaGF-uboArDJoNM0pnVxfM85JHIT9WlRHOlkMx3HYAPPeyxc3e6cf83BwdiekF5Oq8egp80pjVwSiRVgkF_h9jvtBDOk_4Btj6h2sP1nFlAPYVupzNggOgt6aaYBzAAwcxZytD0/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
 move /y servers.dat %launcherpath%
-curl -L  "https://download1503.mediafire.com/mb3b6u5dnjjg9T-mzGdUatz1y-oZUD_iWO-LZvZq9_UNLUKMM6hYK5Pg9vml5RslboTSyrc1aR5lPsXdlcHTRzqz-flzdKQZmbNrb5MHvcQ2d4zIYDrMUtgYlKmT9xmKVMGJiwoPLhMI6oVPjmy0H-h6u834ZYuuUoxUzPxGjQiCkRs/a5hobbrlhmz2l3n/fabric.7z"           id="downloadButton" --ssl-no-revoke --output fabric.7z
+curl -L  "https://download1503.mediafire.com/6sa0orcxcq8ghMhNfY9AZ8FEjrPW7Y3oNRfTLe4ZPB-Czszp4Xr35VnhBPuM2mc8tF9keWd9s2IYIoJOwXVikBHdwZRSiSgfblpcosxi4IoSRBk6re9mvO42MDcoEQW2DdxLSwMzXaQRMee3f6VU3HX_GY_eLyZgtnSBPSWA1yQH/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
