@@ -289,10 +289,10 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download1590.mediafire.com/j4gjtls0djtgjvECZEsK0VjAIQhcU5w6dlEwpf5TKr-skD3hRo_4_sdssYh4nn80Zr1xmIbbRzQ6N-XJ7HrTDg9RicVtwI8uAUNVkcDIUuAr7D8xDUhAwqHhMNfST7NIoCzqixyP_XmCgJGUn3Z8Dj4CquEd22Uh1-ffBH3JdrnQ/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://download854.mediafire.com/hny2v65icdkgQ-DgBoUobPqj0urqu03klmZ1vZaGF-uboArDJoNM0pnVxfM85JHIT9WlRHOlkMx3HYAPPeyxc3e6cf83BwdiekF5Oq8egp80pjVwSiRVgkF_h9jvtBDOk_4Btj6h2sP1nFlAPYVupzNggOgt6aaYBzAAwcxZytD0/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
+curl -L  "https://download2263.mediafire.com/vryzv5n1pelgYsM8AWANHo6t_c_uF4c6UF26FMXPoki1s8Ds1NWEe7AVjIyrDzNmFWZWrd1QyW3t1Y_mGQbSI_a34w3KNvx3lUoVUnKSQ-ZRD9Bb3zlWggJyJ4WTzR4S7X-4NFFAeny9kmbCsuAnCauaMBr-WRJPYVx-ofGm2yn2/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://download854.mediafire.com/pgqx5vimn5qgfTed5WlGFZY05a1trboX-pmd_w0VGLulrQDejl1ryZY-mwTh_ROXaULQyWBU1DI7Lsdyx1-6_8Ch9X-ZPAi8H2ueIzY_-_Jaybv6yfT9EavnTO1n_-xfHttjHUuzh5qzTekO-hJ2KbzRLdBHPbis-D-lNmtQhpuU/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
 move /y servers.dat %launcherpath%
-curl -L  "https://download1503.mediafire.com/6sa0orcxcq8ghMhNfY9AZ8FEjrPW7Y3oNRfTLe4ZPB-Czszp4Xr35VnhBPuM2mc8tF9keWd9s2IYIoJOwXVikBHdwZRSiSgfblpcosxi4IoSRBk6re9mvO42MDcoEQW2DdxLSwMzXaQRMee3f6VU3HX_GY_eLyZgtnSBPSWA1yQH/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
+curl -L  "https://download1503.mediafire.com/a5ci855ieiegGwdJzhMN9gQ3zRZRbjBtRRGQ6ldTeSMmDmVNdjtDiSSFSY-BcZ43CnIkyBvFiisPEylcbZZcRAvOXWVS3puqbpCndpxOl0VeBhxM8SoWEEPe-HRN-sRCUQBsdb-jmaRhm1CRtOD5ouIHTJVpdKsdJvlglPkmSD9Z/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
 for %%I in ("fabric.7z") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
@@ -387,7 +387,7 @@ echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
 echo If you're using PrismLauncher, CurseForge or Not Listed launcher skip this
 echo because you install fabric by using your launcher.
 echo --------------------------------------------------------------------------------
-curl -L  "https://download1590.mediafire.com/j4gjtls0djtgjvECZEsK0VjAIQhcU5w6dlEwpf5TKr-skD3hRo_4_sdssYh4nn80Zr1xmIbbRzQ6N-XJ7HrTDg9RicVtwI8uAUNVkcDIUuAr7D8xDUhAwqHhMNfST7NIoCzqixyP_XmCgJGUn3Z8Dj4CquEd22Uh1-ffBH3JdrnQ/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://download2263.mediafire.com/vryzv5n1pelgYsM8AWANHo6t_c_uF4c6UF26FMXPoki1s8Ds1NWEe7AVjIyrDzNmFWZWrd1QyW3t1Y_mGQbSI_a34w3KNvx3lUoVUnKSQ-ZRD9Bb3zlWggJyJ4WTzR4S7X-4NFFAeny9kmbCsuAnCauaMBr-WRJPYVx-ofGm2yn2/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
