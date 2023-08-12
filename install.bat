@@ -202,6 +202,7 @@ if exist "%appdata%\PrismLauncher\instances\1.19.2\.minecraft" (
 
 :prismcreate
 Title Creating Prism folders...
+mkdir "%appdata%\PrismLauncher\instances"
 mkdir "%appdata%\PrismLauncher\instances\1.19.2"
 mkdir "%appdata%\PrismLauncher\instances\1.19.2\.minecraft"
 goto prismcheck
