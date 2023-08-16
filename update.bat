@@ -233,7 +233,7 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://download847.mediafire.com/4f69ny3ey9fgfXKmDyalkNndLk56ohur6I4pGhJzqDbN4FiKet5oAvMf0GXAo3ObzEzKBJqu1t_KrwpQcTOHqzTt41LnZw6D3SP9I8B8K5rPzeMbHVLHaEA5IPwt2xs-2YcruU-Qs_7I93i7ZmKkvX9RlK6n6G73KpQhk7-hb_-b/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://download847.mediafire.com/kr0wmgvw2bdgtKUIMPymcBW46UJC_IuwAdPtL6y3MURINUVNUV1VSDW76Mgbw1l2IJGsifGfcmz-W689D_lc8oIHbays09R6zxaAttrLTe6D-gvqcfD0oihpy8mBFjDte4wqQRPUkKVSrn-NkaUmGi7-kt7E-ZgMbawNLuWGgQ/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
@@ -311,7 +311,7 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download1531.mediafire.com/hg39ff168vpgPDi5LyXF-5VigwW1qR6gBKLQI7Jl1LzNYl2xbzrVyVp9BXI2HDKn33rjeZLdcFlgBGYbPUfzMdWyh5RnfOzbZQ30SJlNUhtgZhvQM3u5t_h5VuiKrtPPLyo4ssMJKhMilp1grrHCb0D9Vx_iaduDWIbOgo2idHv9/ppneycmgedobbgv/mods.7z" --ssl-no-revoke --output mods.7z
+curl -L  "https://download1531.mediafire.com/vlzx2ezdul9gaBA5OtvXcgmVqsPmyZkkmmPeGen7McWYV834PkofEoqfS2XGJrJh-kPfDWJw7DWMaGIsig5vhWSMZIGw8WmPmN8KdbgLMhTow9GuAjCSnJi1zGcZrjfVn_rlsO0COk5_J8JXkmigzMH9kv-W1DX7BIK-rh6Qvw/ppneycmgedobbgv/mods.7z" --ssl-no-revoke --output mods.7z
 for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
