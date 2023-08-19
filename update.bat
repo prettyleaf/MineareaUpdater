@@ -311,7 +311,7 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download1531.mediafire.com/hg39ff168vpgPDi5LyXF-5VigwW1qR6gBKLQI7Jl1LzNYl2xbzrVyVp9BXI2HDKn33rjeZLdcFlgBGYbPUfzMdWyh5RnfOzbZQ30SJlNUhtgZhvQM3u5t_h5VuiKrtPPLyo4ssMJKhMilp1grrHCb0D9Vx_iaduDWIbOgo2idHv9/ppneycmgedobbgv/mods.7z" --ssl-no-revoke --output mods.7z
+curl -L  "https://download1531.mediafire.com/c9337nvqj0jg0yNUCeaSAu5BUWq-DSMOAi-QE2qK4b4BKS4A1vynjqMoRj0fIBPQvVZ6O4vgwpX1uDmEylABDa1O8yBQ8v9qofmyM0hTihcdBF-1dcjMmzPHWwIci6x3ECeQ4y-wjkaAvAsR919B47VXh4Tf-w7jbiVFZXcwjomH/ppneycmgedobbgv/mods.7z" --ssl-no-revoke --output mods.7z
 for %%I in ("mods.7z") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
