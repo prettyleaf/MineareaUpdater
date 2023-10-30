@@ -8,8 +8,12 @@ Color 0F
 
 set scriptpath=%~dp0
 echo %scriptpath%
+chcp 437 > nul
 
-::Idea took from https://github.com/SlejmUr/Manifest_Tool_TB. Thanks for help https://github.com/SlejmUr.
+::Idea took from https://github.com/SlejmUr/Manifest_Tool_TB.
+::Credits 
+::https://github.com/SlejmUr
+::JVAV
 
 ::requirements check
 :7zipcheck
@@ -26,7 +30,7 @@ goto 7zipcheck
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo                       Downloading 7-Zip...
+echo ###########################  Downloading 7-Zip... #############################
 echo -------------------------------------------------------------------------------
 curl.exe -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/7z.exe" --ssl-no-revoke --output 7z.exe
 move 7z.exe Resources
@@ -44,7 +48,7 @@ goto cmdCheck
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo                        Downloading cmdmenusel...
+echo ########################### Downloading cmdmenusel... #########################
 echo -------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/cmdmenusel.exe" --ssl-no-revoke --output cmdmenusel.exe
 move cmdmenusel.exe Resources
@@ -62,7 +66,7 @@ goto gitCheck
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo                        Downloading git...
+echo ########################### Downloading git... ################################
 echo -------------------------------------------------------------------------------
 curl -L  "https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/Git-2.41.0.3-64-bit.exe" --ssl-no-revoke --output Git-2.41.0.3-64-bit.exe
 move Git-2.41.0.3-64-bit.exe Resources
@@ -106,7 +110,7 @@ Title Checking updates...2
 cls 
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo                        Trying to verify version...
+echo ######################## Trying to verify version... ##########################
 echo -------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/version.verify" --ssl-no-revoke --output version.verify
 move version.verify %userprofile%\.minearea
@@ -114,7 +118,9 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BYABCQAAAIIeSdL/byLjaA==" %userprofile%\.minearea\version.verify >Nul
+::BYABCQAAAIIeSdL/byLjaA== 103
+::BYABCQAAAIIeSYH/t8kZBg== 104
+findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -140,7 +146,7 @@ exit
 Title Verify complete
 cls
 echo -------------------------------------------------------------------------------
-echo                        Your updater is up to date.
+echo ###################### Your downloader is up to date. #########################
 echo -------------------------------------------------------------------------------
 timeout 2 >nul
 goto welcome
@@ -152,7 +158,7 @@ Title Select one of options...
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo                         What launcher do you use?
+echo ########################## What launcher do you use? ##########################
 echo -------------------------------------------------------------------------------
 Resources\cmdMenuSel f870 "  Minecraft Launcher" "  PrismLauncher (not portable)" "  TLauncher" "  CurseForge (work in progress)" "  Not listed here"
 if %ERRORLEVEL% == 1 goto minecraftcheck
@@ -233,7 +239,7 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://download847.mediafire.com/kr0wmgvw2bdgtKUIMPymcBW46UJC_IuwAdPtL6y3MURINUVNUV1VSDW76Mgbw1l2IJGsifGfcmz-W689D_lc8oIHbays09R6zxaAttrLTe6D-gvqcfD0oihpy8mBFjDte4wqQRPUkKVSrn-NkaUmGi7-kt7E-ZgMbawNLuWGgQ/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://raw.githubusercontent.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
@@ -267,7 +273,7 @@ Title Game Updater
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo Welcome to Game Updater menu. Updater version is 1.0.3. If this version doesn't
+echo Welcome to Game Updater menu. Updater version is 1.0.4. If this version doesn't
 echo match the version in discord, then click Update Client. If version is fine and
 echo you need to update your game, then click Update Game. You can also come back
 echo here after installation and check your version by clicking Version Check button.
@@ -311,8 +317,35 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download1531.mediafire.com/ua0ufzda1a9gcf0A4Gjnc8e2N14qvH-gUaMB6NIJVI1XN9Q2gMnOXLVpN-VmADAKB1rWYM1EGTxLcaCJmMPqQmZL0SFOfNu7h6DVFFsZfqEPNHwVGmldlgaBMuAi9nsvrDaI7rVjm_ZNyfw88kF4vbwxjl_hDnhEEKlm9WXPdYM/ppneycmgedobbgv/mods.7z" --ssl-no-revoke --output mods.7z
-for %%I in ("mods.7z") do (
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.001" --ssl-no-revoke --output mods.7z.001
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.002" --ssl-no-revoke --output mods.7z.002
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.003" --ssl-no-revoke --output mods.7z.003
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.004" --ssl-no-revoke --output mods.7z.004
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.005" --ssl-no-revoke --output mods.7z.005
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.006" --ssl-no-revoke --output mods.7z.006
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.007" --ssl-no-revoke --output mods.7z.007
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.008" --ssl-no-revoke --output mods.7z.008
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.009" --ssl-no-revoke --output mods.7z.009
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.010" --ssl-no-revoke --output mods.7z.010
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.011" --ssl-no-revoke --output mods.7z.011
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.012" --ssl-no-revoke --output mods.7z.012
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.013" --ssl-no-revoke --output mods.7z.013
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.014" --ssl-no-revoke --output mods.7z.014
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.015" --ssl-no-revoke --output mods.7z.015
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.016" --ssl-no-revoke --output mods.7z.016
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.017" --ssl-no-revoke --output mods.7z.017
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.018" --ssl-no-revoke --output mods.7z.018
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.019" --ssl-no-revoke --output mods.7z.019
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.020" --ssl-no-revoke --output mods.7z.020
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.021" --ssl-no-revoke --output mods.7z.021
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.022" --ssl-no-revoke --output mods.7z.022
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.023" --ssl-no-revoke --output mods.7z.023
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.024" --ssl-no-revoke --output mods.7z.024
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.025" --ssl-no-revoke --output mods.7z.025
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.026" --ssl-no-revoke --output mods.7z.026
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.027" --ssl-no-revoke --output mods.7z.027
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.028" --ssl-no-revoke --output mods.7z.028
+for %%I in ("mods.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
 mkdir %launcherpath%\mods_backup
@@ -329,7 +362,7 @@ Title GOODBYE!
 cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
-echo                                    GOODBYE!
+echo ################################# GOODBYE! #####################################
 echo --------------------------------------------------------------------------------
 timeout 2 >nul
 exit
@@ -340,7 +373,7 @@ Title Update Complete
 cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
-echo                              Update Complete!
+echo ############################# Update Complete! #################################
 echo --------------------------------------------------------------------------------
 Resources\cmdMenuSel f870 "                               Continue"
 if %ERRORLEVEL% == 1 goto mainmenu
@@ -350,7 +383,7 @@ Title Something went wrong!
 cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
-echo               Error! Something went wrong. Please report a problem.
+echo ##### Woops! Something went wrong and gives an error. Please report back. #####
 echo --------------------------------------------------------------------------------
 Resources\cmdMenuSel f870 "                               Continue" "                            Report an issue"
 if %ERRORLEVEL% == 1 goto mainmenu
