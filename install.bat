@@ -8,8 +8,12 @@ Color 0F
 
 set scriptpath=%~dp0
 echo %scriptpath%
+chcp 437 > nul
 
-::Idea took from https://github.com/SlejmUr/Manifest_Tool_TB. Thanks for help https://github.com/SlejmUr.
+::Idea took from https://github.com/SlejmUr/Manifest_Tool_TB.
+::Credits 
+::https://github.com/SlejmUr
+::JVAV
 
 ::requirements check
 :7zipcheck
@@ -26,7 +30,7 @@ goto 7zipcheck
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo                       Downloading 7-Zip...
+echo ###########################  Downloading 7-Zip... #############################
 echo -------------------------------------------------------------------------------
 curl.exe -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/7z.exe" --ssl-no-revoke --output 7z.exe
 move 7z.exe Resources
@@ -44,7 +48,7 @@ goto cmdCheck
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo                        Downloading cmdmenusel...
+echo ########################### Downloading cmdmenusel... #########################
 echo -------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/cmdmenusel.exe" --ssl-no-revoke --output cmdmenusel.exe
 move cmdmenusel.exe Resources
@@ -62,7 +66,7 @@ goto gitCheck
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo                        Downloading git...
+echo ########################### Downloading git... ################################
 echo -------------------------------------------------------------------------------
 curl -L  "https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/Git-2.41.0.3-64-bit.exe" --ssl-no-revoke --output Git-2.41.0.3-64-bit.exe
 move Git-2.41.0.3-64-bit.exe Resources
@@ -106,7 +110,7 @@ Title Checking updates...2
 cls 
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo                        Trying to verify version...
+echo ######################## Trying to verify version... ##########################
 echo -------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/version.verify" --ssl-no-revoke --output version.verify
 move version.verify %userprofile%\.minearea
@@ -114,9 +118,9 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-::BYAxCQAAAMIaDcXL/sVGCeMC old
-::BYABCQAAAIIeSdL/byLjaA== new
-findstr /m "BYABCQAAAIIeSdL/byLjaA==" %userprofile%\.minearea\version.verify >Nul
+::BYABCQAAAIIeSdL/byLjaA== 103
+::BYABCQAAAIIeSYH/t8kZBg== 104
+findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -142,7 +146,7 @@ exit
 Title Verify complete
 cls
 echo -------------------------------------------------------------------------------
-echo                        Your downloader is up to date.
+echo ###################### Your downloader is up to date. #########################
 echo -------------------------------------------------------------------------------
 timeout 2 >nul
 goto welcome
@@ -154,7 +158,7 @@ Title Select one of options...
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo                         What launcher do you use?
+echo ########################## What launcher do you use? ##########################
 echo -------------------------------------------------------------------------------
 Resources\cmdMenuSel f870 "  Minecraft Launcher" "  PrismLauncher (not portable)" "  TLauncher" "  CurseForge (work in progress)" "  Not listed here"
 if %ERRORLEVEL% == 1 goto minecraftcheck
@@ -236,25 +240,25 @@ MODE 81,10
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\mods"
 mkdir "%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage"
-curl -L  "https://download847.mediafire.com/dwrzzdg6ladgs-53j1V5jdkXRZn_7S3QTwUHGm57La0yRqhuRjlO8LsWbmVXsfdpeaD29SaFEHy2Cuj9eQyhykWJxVWB1ODdoOVSn4wdkwbmT7ckV3CrZRimdJBPl1yVUX94wwGgG5mx-vvLG92f0C-WSkVoX-WlQlQVqrVSGTev/51p3udy0qni2ci7/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://raw.githubusercontent.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234\profileImage
 set launcherpath=%userprofile%\curseforge\minecraft\Instances\BetterMC+Modified+by+Rockstar234
 goto mainmenu
 
-:launchernotlisted
-Title Default launcher settings were selected...
-cls
-MODE 81,10
-set launcherpath=%appdata%\.minecraft
-goto mainmenu
-
 :notlistedcheck
-Title Checking minecraft folder...
+Title Selecting game folder...
 if exist "%appdata%\.minecraft" (
-    goto launchernotlisted
+    goto notlistedpath
 ) else (
     goto createnotlisted
 )
+
+:notlistedpath
+MODE 79,13
+set "psCommand="(new-object -COM 'Shell.Application')^.BrowseForFolder(0,'Please choose your .minecraft folder.',0,0).self.path""
+
+for /f "usebackq delims=" %%A in (`powershell %psCommand%`) do set "launcherpath=%%A"
+goto mainmenu
 
 :createnotlisted
 Title Creating minecraft folder...
@@ -290,11 +294,14 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://download2263.mediafire.com/oze20nked03gxrEnselCB5p64omjN-xqlAW1yrh7aBdhMoK2KCC9iKOCz5WmgWbDCWH0TevaqnMJqQko3RsH64IEtPUrqWzvsP1R69FuqWk3CjfvbB8SedjbGoCU-zwBF3VfyPL0BYitIN2oA6beZdBe3bNbw79a1hbj_ygvb0yp/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://download854.mediafire.com/p9yjqecnmvog-2QQf3lEAgRQoIuzKEnhvkZS7GDnrkiZxEVmPxPMngQw5JmjzVOWm7ddVhR6_yKaCnpTCL4z3W76ANfT5U1Rf7y0gxsGmxzU9HhNfeL6XCmwNSuqrdRYjHgihNmt32TkbU2VYBfSZJjuvAuFrWg_eniEpQTamO1I/8ef2ef4mmwtzqou/servers.dat" --ssl-no-revoke --output servers.dat
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/servers.dat" --ssl-no-revoke --output servers.dat
 move /y servers.dat %launcherpath%
-curl -L  "https://download1503.mediafire.com/649m73u5gi2gcHLodxHsVmhp-EqOqy4P3_RhnIz4ArquwjGxT_XC1ffcoI3My47MinNAxDQE3uKBOTYONNJPdaKqnfYCSpa0EpIYfdujrBhSJRLlWBUd5OjTEtdY7k7vu__pqDpsLxWxBKJRUV5Uoc3gJZFrEOxkvzgMmz964foG/a5hobbrlhmz2l3n/fabric.7z" --ssl-no-revoke --output fabric.7z
-for %%I in ("fabric.7z") do (
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.001" --ssl-no-revoke --output fabric.7z.001
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.002" --ssl-no-revoke --output fabric.7z.002
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.003" --ssl-no-revoke --output fabric.7z.003
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.004" --ssl-no-revoke --output fabric.7z.004
+for %%I in ("fabric.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
 robocopy Resources\.minecraft %launcherpath% /E /MOVE
@@ -334,7 +341,7 @@ Title GOODBYE!
 cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
-echo                                    GOODBYE!
+echo ################################# GOODBYE! #####################################
 echo --------------------------------------------------------------------------------
 timeout 2 >nul
 exit
@@ -345,7 +352,7 @@ Title Update Complete
 cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
-echo                             Download Complete!
+echo ########################### Download Complete! #################################
 echo --------------------------------------------------------------------------------
 timeout 3 >nul
 exit
@@ -355,7 +362,7 @@ Title Something went wrong!
 cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
-echo               Error! Something went wrong. Please report a problem.
+echo ##### Woops! Something went wrong and gives an error. Please report back. #####
 echo --------------------------------------------------------------------------------
 Resources\cmdMenuSel f870 "                               Continue" "                            Report an issue"
 if %ERRORLEVEL% == 1 goto mainmenu
@@ -370,8 +377,8 @@ Title Client installed
 cls
 MODE 87,10
 echo --------------------------------------------------------------------------------
-echo     Your client is installed, but mods are missing. Launching update.bat...
-echo     HINT: Click Update Game to install mods and then you can launch game.
+echo ### Your client is installed, but mods are missing. Launching update.bat... ###
+echo #### HINT: Click Update Game to install mods and then you can launch game. ####
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
 start update.bat
@@ -388,11 +395,23 @@ echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
 echo If you're using PrismLauncher, CurseForge or Not Listed launcher skip this
 echo because you install fabric by using your launcher.
 echo --------------------------------------------------------------------------------
-curl -L  "https://download2263.mediafire.com/oze20nked03gxrEnselCB5p64omjN-xqlAW1yrh7aBdhMoK2KCC9iKOCz5WmgWbDCWH0TevaqnMJqQko3RsH64IEtPUrqWzvsP1R69FuqWk3CjfvbB8SedjbGoCU-zwBF3VfyPL0BYitIN2oA6beZdBe3bNbw79a1hbj_ygvb0yp/iny09htz5hyx08k/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 Powershell.exe -executionpolicy remotesigned -File  java.ps1
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
 ) else (
-    goto somethingwentwrong
+    goto fabricmissing
     start fabric-installer-0.11.2.jar
 )
+
+:fabricmissing
+Title Fabric Laoder is missing.
+cls
+MODE 87,10
+echo --------------------------------------------------------------------------------
+echo Your Fabric loader is missing, so it will be installed in a few seconds.
+echo If it gives an error, then try to launch the file manually. Report back issues.
+echo If you download fabric via your launcher make sure the version is 0.14.21.
+echo --------------------------------------------------------------------------------
+timeout 10 >nul
+exit
