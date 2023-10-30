@@ -274,7 +274,7 @@ Title Game Downloader
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo Welcome to Game Downloader menu. Current version is 1.0.3. If this version
+echo Welcome to Game Downloader menu. Current version is 1.0.4. If this version
 echo doesn't match the version in discord, then click Update Client. If version is
 echo fine and you need to update your game, then click Update Game. You can also come
 echo back here after installation and check your version by clicking Version Check button.
