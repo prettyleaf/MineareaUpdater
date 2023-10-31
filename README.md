@@ -2,7 +2,8 @@
 Universal tools for client or server minecraft.
 - updater.bat (100%)
 - install.bat (100%)
-- host.bat (10%)
+- host.bat (0%)
+- cleaner.bat (0%)
 
 ## Install
 Is the file you need to launch first. It downloads mod loader and then launcher mods downloader/updater.
