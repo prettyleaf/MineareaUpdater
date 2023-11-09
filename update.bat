@@ -38,7 +38,7 @@ goto 7zipcheck
 
 :cmdCheck
 if exist "Resources\cmdmenusel.exe" (
-goto gitCheck
+goto java17Check
 ) else (
 goto GetCmd
 )
@@ -54,47 +54,28 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/cmdmenu
 move cmdmenusel.exe Resources
 goto cmdCheck
 
-:gitCheck
-if exist "Resources\Git-2.41.0.3-64-bit.exe" (
-goto timeout
+:java17Check
+if exist "C:\Program Files\Java\jdk-17\bin\java.exe" (
+goto foldercheck
 ) else (
-goto getGit
+goto javaWarning
 )
-goto gitCheck
 
-:getGit
+:javaWarning
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo ########################### Downloading git... ################################
+echo ########################### Java 17 is missing! ###############################
+echo ########## You can install/update Java in main menu. Redirecting... ###########
 echo -------------------------------------------------------------------------------
-curl -L  "https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/Git-2.41.0.3-64-bit.exe" --ssl-no-revoke --output Git-2.41.0.3-64-bit.exe
-move Git-2.41.0.3-64-bit.exe Resources
-goto timeout
+timeout /T 3 >nul
+goto foldercheck
 ::requirements check end
-
-:timeout
-Title Launching updater...
-cls
-MODE 87,21
-echo -------------------------------------------------------------------------------
-echo       DO NOT RESIZE THIS WINDOW ESPECIALLY IF YOURE USING WINDOWS 11
-echo.
-echo If you have got a problem/issue, please report it back in our discord server.
-echo Most of problems you meet are on user's side, so please make sure you're doing
-echo everything right, so you don't waste your and our time.
-echo.
-echo       DO NOT RESIZE THIS WINDOW ESPECIALLY IF YOURE USING WINDOWS 11
-echo -------------------------------------------------------------------------------
-echo.
-timeout /T 10 >nul | echo 			Please wait 10 sec to continue^!
-Resources\cmdMenuSel f870 "                                    Continue"
-if %ERRORLEVEL% == 1 goto foldercheck
 
 ::check for updates
 :foldercheck
 Title Checking updates...1
-if exist "%userprofile%\.minearea" (
+if exist "%userprofile%\.minearea\temp" (
 goto getVer
 ) else (
     goto foldercreate
@@ -103,6 +84,7 @@ goto getVer
 :foldercreate
 Title Creating folder...
 mkdir "%userprofile%\.minearea"
+mkdir "%userprofile%\.minearea\temp"
 goto foldercheck
 
 :getVer
@@ -160,7 +142,11 @@ MODE 87,17
 echo -------------------------------------------------------------------------------
 echo ########################## What launcher do you use? ##########################
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Minecraft Launcher" "  PrismLauncher (not portable)" "  TLauncher" "  CurseForge (work in progress)" "  Not listed here"
+echo *Means this option is recommended
+echo **Means not portable version and recommended
+echo ***Means work in progress
+echo. 
+Resources\cmdMenuSel f870 "  Minecraft Launcher" "  **PrismLauncher" "  TLauncher" "  CurseForge" "  Not listed here"
 if %ERRORLEVEL% == 1 goto minecraftcheck
 if %ERRORLEVEL% == 2 goto prismcheck
 if %ERRORLEVEL% == 3 goto tlaunchercheck
@@ -198,16 +184,29 @@ goto mainmenu
 
 :prismcheck
 Title Checking Prism folders...
-if exist "%appdata%\PrismLauncher\instances\1.19.2\.minecraft" (
-    goto launcherprism
-) else (
-    goto prismcreate
+findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %appdata%\PrismLauncher\instances\1.19.2\check.verify >Nul
+if %errorlevel%==0 (
+goto launcherprism
+)
+
+if %errorlevel%==1 (
+goto prismcreate
 )
 
 :prismcreate
 Title Creating Prism folders...
+mkdir "%appdata%\PrismLauncher\instances"
+mkdir "%appdata%\PrismLauncher\icons"
 mkdir "%appdata%\PrismLauncher\instances\1.19.2"
 mkdir "%appdata%\PrismLauncher\instances\1.19.2\.minecraft"
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/instance.cfg" --ssl-no-revoke --output instance.cfg
+move /y instance.cfg %appdata%\PrismLauncher\instances\1.19.2
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mmc-pack.json" --ssl-no-revoke --output mmc-pack.json
+move /y mmc-pack.json %appdata%\PrismLauncher\instances\1.19.2
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/prismlauncher/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+move /y minearea2k20_avatar.jpg %appdata%\PrismLauncher\icons
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/check.verify" --ssl-no-revoke --output check.verify
+move /y check.verify %appdata%\PrismLauncher\instances\1.19.2
 goto prismcheck
 
 :launchertlauncher
@@ -275,8 +274,8 @@ MODE 87,17
 echo -------------------------------------------------------------------------------
 echo Welcome to Game Updater menu. Updater version is 1.0.4. If this version doesn't
 echo match the version in discord, then click Update Client. If version is fine and
-echo you need to update your game, then click Update Game. You can also come back
-echo here after installation and check your version by clicking Version Check button.
+echo you need to update your game, then click Update Game. You can also update
+echo game files, configs and etc by clicking Install Game button.
 echo -------------------------------------------------------------------------------
 Resources\cmdMenuSel f870 "  Update Game" "  Update Client" "  Discord Server" "  Exit"
 if %ERRORLEVEL% == 1 goto updategame
@@ -318,32 +317,113 @@ echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.001" --ssl-no-revoke --output mods.7z.001
+cls
+echo Downloading... (1/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.002" --ssl-no-revoke --output mods.7z.002
+cls
+echo Downloading... (2/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.003" --ssl-no-revoke --output mods.7z.003
+cls
+echo Downloading... (3/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.004" --ssl-no-revoke --output mods.7z.004
+cls
+echo Downloading... (4/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.005" --ssl-no-revoke --output mods.7z.005
+cls
+echo Downloading... (5/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.006" --ssl-no-revoke --output mods.7z.006
+cls
+echo Downloading... (6/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.007" --ssl-no-revoke --output mods.7z.007
+cls
+echo Downloading... (7/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.008" --ssl-no-revoke --output mods.7z.008
+cls
+echo Downloading... (8/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.009" --ssl-no-revoke --output mods.7z.009
+cls
+echo Downloading... (9/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.010" --ssl-no-revoke --output mods.7z.010
+cls
+echo Downloading... (10/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.011" --ssl-no-revoke --output mods.7z.011
+cls
+echo Downloading... (11/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.012" --ssl-no-revoke --output mods.7z.012
+cls
+echo Downloading... (12/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.013" --ssl-no-revoke --output mods.7z.013
+cls
+echo Downloading... (13/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.014" --ssl-no-revoke --output mods.7z.014
+cls
+echo Downloading... (14/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.015" --ssl-no-revoke --output mods.7z.015
+cls
+echo Downloading... (15/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.016" --ssl-no-revoke --output mods.7z.016
+cls
+echo Downloading... (16/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.017" --ssl-no-revoke --output mods.7z.017
+cls
+echo Downloading... (17/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.018" --ssl-no-revoke --output mods.7z.018
+cls
+echo Downloading... (18/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.019" --ssl-no-revoke --output mods.7z.019
+cls
+echo Downloading... (19/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.020" --ssl-no-revoke --output mods.7z.020
+cls
+echo Downloading... (20/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.021" --ssl-no-revoke --output mods.7z.021
+cls
+echo Downloading... (21/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.022" --ssl-no-revoke --output mods.7z.022
+cls
+echo Downloading... (22/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.023" --ssl-no-revoke --output mods.7z.023
+cls
+echo Downloading... (23/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.024" --ssl-no-revoke --output mods.7z.024
+cls
+echo Downloading... (24/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.025" --ssl-no-revoke --output mods.7z.025
+cls
+echo Downloading... (25/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.026" --ssl-no-revoke --output mods.7z.026
+cls
+echo Downloading... (26/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.027" --ssl-no-revoke --output mods.7z.027
+cls
+echo Downloading... (27/28)
+echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.028" --ssl-no-revoke --output mods.7z.028
 for %%I in ("mods.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
@@ -351,6 +431,34 @@ for %%I in ("mods.7z.001") do (
 mkdir %launcherpath%\mods_backup
 robocopy %launcherpath%\mods %launcherpath%\mods_backup /E /MOVE
 robocopy Resources\mods %launcherpath%\mods /E /MOVE
+move /y mods.7z.001 %userprofile%\.minearea\temp
+move /y mods.7z.002 %userprofile%\.minearea\temp
+move /y mods.7z.003 %userprofile%\.minearea\temp
+move /y mods.7z.004 %userprofile%\.minearea\temp
+move /y mods.7z.005 %userprofile%\.minearea\temp
+move /y mods.7z.006 %userprofile%\.minearea\temp
+move /y mods.7z.007 %userprofile%\.minearea\temp
+move /y mods.7z.008 %userprofile%\.minearea\temp
+move /y mods.7z.009 %userprofile%\.minearea\temp
+move /y mods.7z.010 %userprofile%\.minearea\temp
+move /y mods.7z.011 %userprofile%\.minearea\temp
+move /y mods.7z.012 %userprofile%\.minearea\temp
+move /y mods.7z.013 %userprofile%\.minearea\temp
+move /y mods.7z.014 %userprofile%\.minearea\temp
+move /y mods.7z.015 %userprofile%\.minearea\temp
+move /y mods.7z.016 %userprofile%\.minearea\temp
+move /y mods.7z.017 %userprofile%\.minearea\temp
+move /y mods.7z.018 %userprofile%\.minearea\temp
+move /y mods.7z.019 %userprofile%\.minearea\temp
+move /y mods.7z.020 %userprofile%\.minearea\temp
+move /y mods.7z.021 %userprofile%\.minearea\temp
+move /y mods.7z.022 %userprofile%\.minearea\temp
+move /y mods.7z.023 %userprofile%\.minearea\temp
+move /y mods.7z.024 %userprofile%\.minearea\temp
+move /y mods.7z.025 %userprofile%\.minearea\temp
+move /y mods.7z.026 %userprofile%\.minearea\temp
+move /y mods.7z.027 %userprofile%\.minearea\temp
+move /y mods.7z.028 %userprofile%\.minearea\temp
 if exist "%launcherpath%\mods\Zoomify-2.9.0.jar" (
     goto updatecomplete
 ) else (
@@ -375,8 +483,8 @@ MODE 87,10
 echo --------------------------------------------------------------------------------
 echo ############################# Update Complete! #################################
 echo --------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "                               Continue"
-if %ERRORLEVEL% == 1 goto mainmenu
+timeout 2 >nul
+goto mainmenu
 
 :somethingwentwrong
 Title Something went wrong!

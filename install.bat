@@ -38,7 +38,7 @@ goto 7zipcheck
 
 :cmdCheck
 if exist "Resources\cmdmenusel.exe" (
-goto gitCheck
+goto java17Check
 ) else (
 goto GetCmd
 )
@@ -54,47 +54,28 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/cmdmenu
 move cmdmenusel.exe Resources
 goto cmdCheck
 
-:gitCheck
-if exist "Resources\Git-2.41.0.3-64-bit.exe" (
-goto timeout
+:java17Check
+if exist "C:\Program Files\Java\jdk-17\bin\java.exe" (
+goto foldercheck
 ) else (
-goto getGit
+goto javaWarning
 )
-goto gitCheck
 
-:getGit
+:javaWarning
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo ########################### Downloading git... ################################
+echo ########################### Java 17 is missing! ###############################
+echo ########## You can install/update Java in main menu. Redirecting... ###########
 echo -------------------------------------------------------------------------------
-curl -L  "https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/Git-2.41.0.3-64-bit.exe" --ssl-no-revoke --output Git-2.41.0.3-64-bit.exe
-move Git-2.41.0.3-64-bit.exe Resources
-goto timeout
+timeout /T 3 >nul
+goto foldercheck
 ::requirements check end
-
-:timeout
-Title Launching installer...
-cls
-MODE 87,21
-echo -------------------------------------------------------------------------------
-echo       DO NOT RESIZE THIS WINDOW ESPECIALLY IF YOURE USING WINDOWS 11
-echo.
-echo If you have got a problem/issue, please report it back in our discord server.
-echo Most of problems you meet are on user's side, so please make sure you're doing
-echo everything right, so you don't waste your and our time.
-echo.
-echo       DO NOT RESIZE THIS WINDOW ESPECIALLY IF YOURE USING WINDOWS 11
-echo -------------------------------------------------------------------------------
-echo.
-timeout /T 10 >nul | echo 			Please wait 10 sec to continue^!
-Resources\cmdMenuSel f870 "                                    Continue"
-if %ERRORLEVEL% == 1 goto foldercheck
 
 ::check for updates
 :foldercheck
 Title Checking updates...1
-if exist "%userprofile%\.minearea" (
+if exist "%userprofile%\.minearea\temp" (
 goto getVer
 ) else (
     goto foldercreate
@@ -103,6 +84,7 @@ goto getVer
 :foldercreate
 Title Creating folder...
 mkdir "%userprofile%\.minearea"
+mkdir "%userprofile%\.minearea\temp"
 goto foldercheck
 
 :getVer
@@ -160,7 +142,11 @@ MODE 87,17
 echo -------------------------------------------------------------------------------
 echo ########################## What launcher do you use? ##########################
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Minecraft Launcher" "  PrismLauncher (not portable)" "  TLauncher" "  CurseForge (work in progress)" "  Not listed here"
+echo *Means this option is recommended
+echo **Means not portable version and recommended
+echo ***Means work in progress
+echo. 
+Resources\cmdMenuSel f870 "  Minecraft Launcher" "  **PrismLauncher" "  TLauncher" "  CurseForge" "  Not listed here"
 if %ERRORLEVEL% == 1 goto minecraftcheck
 if %ERRORLEVEL% == 2 goto prismcheck
 if %ERRORLEVEL% == 3 goto tlaunchercheck
@@ -198,17 +184,29 @@ goto mainmenu
 
 :prismcheck
 Title Checking Prism folders...
-if exist "%appdata%\PrismLauncher\instances\1.19.2\.minecraft" (
-    goto launcherprism
-) else (
-    goto prismcreate
+findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %appdata%\PrismLauncher\instances\1.19.2\check.verify >Nul
+if %errorlevel%==0 (
+goto launcherprism
+)
+
+if %errorlevel%==1 (
+goto prismcreate
 )
 
 :prismcreate
 Title Creating Prism folders...
 mkdir "%appdata%\PrismLauncher\instances"
+mkdir "%appdata%\PrismLauncher\icons"
 mkdir "%appdata%\PrismLauncher\instances\1.19.2"
 mkdir "%appdata%\PrismLauncher\instances\1.19.2\.minecraft"
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/instance.cfg" --ssl-no-revoke --output instance.cfg
+move /y instance.cfg %appdata%\PrismLauncher\instances\1.19.2
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mmc-pack.json" --ssl-no-revoke --output mmc-pack.json
+move /y mmc-pack.json %appdata%\PrismLauncher\instances\1.19.2
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/prismlauncher/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+move /y minearea2k20_avatar.jpg %appdata%\PrismLauncher\icons
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/check.verify" --ssl-no-revoke --output check.verify
+move /y check.verify %appdata%\PrismLauncher\instances\1.19.2
 goto prismcheck
 
 :launchertlauncher
@@ -276,15 +274,50 @@ MODE 87,17
 echo -------------------------------------------------------------------------------
 echo Welcome to Game Downloader menu. Current version is 1.0.4. If this version
 echo doesn't match the version in discord, then click Update Client. If version is
-echo fine and you need to update your game, then click Update Game. You can also come
-echo back here after installation and check your version by clicking Version Check button.
+echo fine and you need to update your mods, then click Update Game. You can also update
+echo game files, configs and etc by clicking Install Game button.
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Install Game" "  Install Fabric" "  Update Client" "  Discord Server" "  Exit"
+Resources\cmdMenuSel f870 "  Install Game" "  Install Fabric" "  Install Java" "  Update Client" "  Discord Server" "  Exit"
 if %ERRORLEVEL% == 1 goto installgame
 if %ERRORLEVEL% == 2 goto fabricinstall
-if %ERRORLEVEL% == 3 goto updateclient
-if %ERRORLEVEL% == 4 goto discordserver
-if %ERRORLEVEL% == 5 goto closescript
+if %ERRORLEVEL% == 3 goto javainstall
+if %ERRORLEVEL% == 4 goto updateclient
+if %ERRORLEVEL% == 5 goto discordserver
+if %ERRORLEVEL% == 6 goto closescript
+
+:javainstall
+Title Installing Java...
+cls
+MODE 81,17
+echo -------------------------------------------------------------------------------
+echo ####### Please, use this method if you REALLY don't have Java installed. ######
+echo ###################### Are you sure you want to continue? #####################
+echo -------------------------------------------------------------------------------
+Resources\cmdMenuSel f870 "  Yes" "  No"
+if %ERRORLEVEL% == 1 goto javainstall2
+if %ERRORLEVEL% == 2 goto mainmenu
+
+:javainstall2
+Title Installing Java...
+cls
+MODE 81,17
+curl -L  "https://download.oracle.com/java/17/archive/jdk-17.0.9_windows-x64_bin.exe" --ssl-no-revoke --output jdk-17.0.9_windows-x64_bin.exe
+move /y jdk-17.0.9_windows-x64_bin.exe %userprofile%\.minearea\temp
+cls
+echo -------------------------------------------------------------------------------
+echo ################## Downloading and launching your installer. ##################
+echo ################# Press Enter when installation is finished. ##################
+echo -------------------------------------------------------------------------------
+timeout 3 >nul
+start "" "%userprofile%\.minearea\temp\jdk-17.0.9_windows-x64_bin.exe"
+pause
+cls
+echo -------------------------------------------------------------------------------
+echo Was the installation successful?
+echo -------------------------------------------------------------------------------
+Resources\cmdMenuSel f870 "  Yes" "  No"
+if %ERRORLEVEL% == 1 goto downloadcomplete
+if %ERRORLEVEL% == 2 goto somethingwentwrong
 
 :installgame
 Title Installing client...
@@ -304,6 +337,10 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/Mineare
 for %%I in ("fabric.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
+move /y fabric.7z.001 %userprofile%\.minearea\temp
+move /y fabric.7z.002 %userprofile%\.minearea\temp
+move /y fabric.7z.003 %userprofile%\.minearea\temp
+move /y fabric.7z.004 %userprofile%\.minearea\temp
 robocopy Resources\.minecraft %launcherpath% /E /MOVE
 if exist "%launcherpath%\config\puzzle.json" (
     goto modsinstall
@@ -354,8 +391,8 @@ MODE 87,10
 echo --------------------------------------------------------------------------------
 echo ########################### Download Complete! #################################
 echo --------------------------------------------------------------------------------
-timeout 3 >nul
-exit
+timeout 2 >nul
+goto mainmenu
 
 :somethingwentwrong
 Title Something went wrong!
@@ -396,7 +433,7 @@ echo If you're using PrismLauncher, CurseForge or Not Listed launcher skip this
 echo because you install fabric by using your launcher.
 echo --------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-Powershell.exe -executionpolicy remotesigned -File  java.ps1
+Powershell.exe -executionpolicy remotesigned -File java.ps1
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
 ) else (
