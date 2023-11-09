@@ -434,6 +434,7 @@ echo because you install fabric by using your launcher.
 echo --------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 Powershell.exe -executionpolicy remotesigned -File java.ps1
+move /y fabric-installer-0.11.2.jar %userprofile%\.minearea\temp
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
 ) else (
