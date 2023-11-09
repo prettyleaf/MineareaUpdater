@@ -203,7 +203,7 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/Mineare
 move /y instance.cfg %appdata%\PrismLauncher\instances\1.19.2
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mmc-pack.json" --ssl-no-revoke --output mmc-pack.json
 move /y mmc-pack.json %appdata%\PrismLauncher\instances\1.19.2
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/prismlauncher/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://raw.githubusercontent.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/prismlauncher/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %appdata%\PrismLauncher\icons
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/check.verify" --ssl-no-revoke --output check.verify
 move /y check.verify %appdata%\PrismLauncher\instances\1.19.2
