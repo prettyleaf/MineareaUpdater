@@ -100,9 +100,9 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-::BYABCQAAAIIeSdL/byLjaA== 103
 ::BYABCQAAAIIeSYH/t8kZBg== 104
-findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %userprofile%\.minearea\version.verify >Nul
+::BYAxCQAAAIMayXbYv5qcYQ== 105
+findstr /m "BYAxCQAAAIMayXbYv5qcYQ==" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -184,7 +184,7 @@ goto mainmenu
 
 :prismcheck
 Title Checking Prism folders...
-findstr /m "BYABCQAAAIIeSYH/t8kZBg==" %appdata%\PrismLauncher\instances\1.19.2\check.verify >Nul
+findstr /m "BYAxCQAAAIMayXbYv5qcYQ==" %appdata%\PrismLauncher\instances\1.19.2\check.verify >Nul
 if %errorlevel%==0 (
 goto launcherprism
 )
