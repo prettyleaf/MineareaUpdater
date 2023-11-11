@@ -277,11 +277,11 @@ echo doesn't match the version in discord, then click Update Client. If version 
 echo fine and you need to update your mods, then click Update Game. You can also update
 echo game files, configs and etc by clicking Install Game button.
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Install Game" "  Install Fabric" "  Install Java" "  Update Client" "  Discord Server" "  Exit"
+Resources\cmdMenuSel f870 "  Install Game" "  Install Fabric" "  Install Java" "  Update Launcher" "  Discord Server" "  Exit"
 if %ERRORLEVEL% == 1 goto installgame
 if %ERRORLEVEL% == 2 goto fabricinstall
 if %ERRORLEVEL% == 3 goto javainstall
-if %ERRORLEVEL% == 4 goto updateclient
+if %ERRORLEVEL% == 4 goto updatelauncher
 if %ERRORLEVEL% == 5 goto discordserver
 if %ERRORLEVEL% == 6 goto closescript
 
@@ -360,7 +360,7 @@ start "" https://discord.gg/5GVb9UwsY7
 Resources\cmdMenuSel f870 "  <- Back to Main Menu"
 if %ERRORLEVEL% == 1 goto mainmenu
 
-:updateclient
+:updatelauncher
 Title Update Client
 cls MODE 79,20
 echo -------------------------------------------------------------------------------
@@ -433,8 +433,10 @@ echo If you're using PrismLauncher, CurseForge or Not Listed launcher skip this
 echo because you install fabric by using your launcher.
 echo --------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/java.ps1" --ssl-no-revoke --output java.ps1
 Powershell.exe -executionpolicy remotesigned -File java.ps1
 move /y fabric-installer-0.11.2.jar %userprofile%\.minearea\temp
+move /y java.ps1 %userprofile%\.minearea\temp
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
 ) else (

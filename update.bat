@@ -274,28 +274,62 @@ MODE 87,17
 echo -------------------------------------------------------------------------------
 echo Welcome to Game Updater menu. Updater version is 1.0.4. If this version doesn't
 echo match the version in discord, then click Update Client. If version is fine and
-echo you need to update your game, then click Update Game. You can also update
+echo you need to update your game, then click Update Mods. You can also update
 echo game files, configs and etc by clicking Install Game button.
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Update Game" "  Update Client" "  Discord Server" "  Exit"
+Resources\cmdMenuSel f870 "  Update Mods" "  Launch Game" "  Update Launcher" "  Discord Server" "  Exit"
 if %ERRORLEVEL% == 1 goto updategame
-if %ERRORLEVEL% == 2 goto updateclient
-if %ERRORLEVEL% == 3 goto discordserver
-if %ERRORLEVEL% == 4 goto closescript
+if %ERRORLEVEL% == 2 goto launchgame
+if %ERRORLEVEL% == 3 goto updatelauncher
+if %ERRORLEVEL% == 4 goto discordserver
+if %ERRORLEVEL% == 5 goto closescript
+
+:launchgame
+Title Game Launcher
+cls
+MODE 81,17
+echo -------------------------------------------------------------------------------
+echo #                     What launcher you want to launch?                       #
+echo -------------------------------------------------------------------------------
+Resources\cmdMenuSel f870 "  PrismLauncher" "  TLauncher" "  Soon" "  <- Back to Main Menu"
+if %ERRORLEVEL% == 1 goto launchprism
+if %ERRORLEVEL% == 2 goto launchtlauncher
+if %ERRORLEVEL% == 3 goto mainmenu
+if %ERRORLEVEL% == 4 goto mainmenu
+
+:launchprism
+Title Launching game...
+cls
+MODE 81,17
+echo -------------------------------------------------------------------------------
+echo #                         Game is launching... Wait...                       #
+echo -------------------------------------------------------------------------------
+start %localappdata%\Programs\PrismLauncher\prismlauncher.exe --launch 1.19.2
+exit
+
+:launchtlauncher
+Title Launching game...
+cls
+MODE 81,17
+echo -------------------------------------------------------------------------------
+echo #                         Game is launching... Wait...                       #
+echo -------------------------------------------------------------------------------
+start %appdata%\.minecraft\tlauncher.exe --version fabric-loader-0.14.21-1.19.2
+exit
 
 :discordserver
 Title Discord Server
 cls MODE 79,20
 echo -------------------------------------------------------------------------------
-echo               You're being redirected to our discord server.
-echo                     You will be redirected in 5 seconds.
+echo #              You're being redirected to our discord server.                 #
+echo #                    You will be redirected in 5 seconds.                     #
 echo -------------------------------------------------------------------------------
 timeout 5 >nul
 start "" https://discord.gg/5GVb9UwsY7
 Resources\cmdMenuSel f870 "  <- Back to Main Menu"
 if %ERRORLEVEL% == 1 goto mainmenu
 
-:updateclient
+:updatelauncher
 Title Update Client
 cls MODE 79,20
 echo -------------------------------------------------------------------------------
