@@ -203,7 +203,7 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/Mineare
 move /y instance.cfg %appdata%\PrismLauncher\instances\1.19.2
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mmc-pack.json" --ssl-no-revoke --output mmc-pack.json
 move /y mmc-pack.json %appdata%\PrismLauncher\instances\1.19.2
-curl -L  "https://raw.githubusercontent.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/prismlauncher/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
+curl -L  "https://raw.githubusercontent.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
 move /y minearea2k20_avatar.jpg %appdata%\PrismLauncher\icons
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/check.verify" --ssl-no-revoke --output check.verify
 move /y check.verify %appdata%\PrismLauncher\instances\1.19.2
@@ -327,7 +327,6 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/servers.dat" --ssl-no-revoke --output servers.dat
 move /y servers.dat %launcherpath%
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.001" --ssl-no-revoke --output fabric.7z.001
@@ -422,26 +421,10 @@ start update.bat
 goto fabricinstall
 
 :fabricinstall
-Title Fabric client install
-cls
-MODE 87,10
-echo --------------------------------------------------------------------------------
-echo       You also need to install fabric, so you can launch the game.
-echo  I'll try to do it myself, but if you see error when launch fabric.jar yourself.
-echo     Also UNCHECK Create profile inside it and select 1.19.2 game version.
-echo If you're using PrismLauncher, CurseForge or Not Listed launcher skip this
-echo because you install fabric by using your launcher.
-echo --------------------------------------------------------------------------------
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/java.ps1" --ssl-no-revoke --output java.ps1
-Powershell.exe -executionpolicy remotesigned -File java.ps1
-move /y fabric-installer-0.11.2.jar %userprofile%\.minearea\temp
-move /y java.ps1 %userprofile%\.minearea\temp
 if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
 ) else (
     goto fabricmissing
-    start fabric-installer-0.11.2.jar
 )
 
 :fabricmissing
@@ -453,5 +436,10 @@ echo Your Fabric loader is missing, so it will be installed in a few seconds.
 echo If it gives an error, then try to launch the file manually. Report back issues.
 echo If you download fabric via your launcher make sure the version is 0.14.21.
 echo --------------------------------------------------------------------------------
-timeout 10 >nul
-exit
+timeout 5 >nul
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/java.ps1" --ssl-no-revoke --output java.ps1
+Powershell.exe -executionpolicy remotesigned -File java.ps1
+move /y fabric-installer-0.11.2.jar %userprofile%\.minearea\temp
+move /y java.ps1 %userprofile%\.minearea\temp
+goto fabricinstall
