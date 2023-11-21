@@ -100,9 +100,9 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-::BYABCQAAAIIeSYH/t8kZBg== 104
+::BYABCQAAAEAeif/nFOE= 110
 ::BYAxCQAAAIMayXbYv5qcYQ== 105
-findstr /m "BYAxCQAAAIMayXbYv5qcYQ==" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BYABCQAAAEAeif/nFOE=" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -184,7 +184,7 @@ goto mainmenu
 
 :prismcheck
 Title Checking Prism folders...
-findstr /m "BYAxCQAAAIMayXbYv5qcYQ==" %appdata%\PrismLauncher\instances\1.19.2\check.verify >Nul
+findstr /m "BYABCQAAAEAeif/nFOE=" %appdata%\PrismLauncher\instances\1.19.2\check.verify >Nul
 if %errorlevel%==0 (
 goto launcherprism
 )
@@ -203,8 +203,8 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/Mineare
 move /y instance.cfg %appdata%\PrismLauncher\instances\1.19.2
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mmc-pack.json" --ssl-no-revoke --output mmc-pack.json
 move /y mmc-pack.json %appdata%\PrismLauncher\instances\1.19.2
-curl -L  "https://raw.githubusercontent.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
-move /y minearea2k20_avatar.jpg %appdata%\PrismLauncher\icons
+curl -L  "https://raw.githubusercontent.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/minearea.ico" --ssl-no-revoke --output minearea.ico
+move /y minearea.ico %appdata%\PrismLauncher\icons
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/check.verify" --ssl-no-revoke --output check.verify
 move /y check.verify %appdata%\PrismLauncher\instances\1.19.2
 goto prismcheck
@@ -272,18 +272,51 @@ Title Game Downloader
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo Welcome to Game Downloader menu. Current version is 1.0.4. If this version
+echo Welcome to Game Downloader menu. Current version is 1.1.0. If this version
 echo doesn't match the version in discord, then click Update Client. If version is
 echo fine and you need to update your mods, then click Update Game. You can also update
 echo game files, configs and etc by clicking Install Game button.
 echo -------------------------------------------------------------------------------
-Resources\cmdMenuSel f870 "  Install Game" "  Install Fabric" "  Install Java" "  Update Launcher" "  Discord Server" "  Exit"
+Resources\cmdMenuSel f870 "  Install Game" "  Install Fabric" "  Install Java" "  Update Launcher" "  Discord Server" "  Exit" "  Repair"
 if %ERRORLEVEL% == 1 goto installgame
 if %ERRORLEVEL% == 2 goto fabricinstall
 if %ERRORLEVEL% == 3 goto javainstall
 if %ERRORLEVEL% == 4 goto updatelauncher
 if %ERRORLEVEL% == 5 goto discordserver
 if %ERRORLEVEL% == 6 goto closescript
+if %ERRORLEVEL% == 7 goto repairbegin
+
+:repairbegin
+Title Game repair tool
+cls
+MODE 81,17
+echo -------------------------------------------------------------------------------
+echo ### Server got updated from 1.0.5 to 1.1.0, so old players should run this. ###
+echo ##### If you are new player and don't know what 1.0.5 is, then press NO. #####
+echo ###################### Are you sure you want to continue? #####################
+echo -------------------------------------------------------------------------------
+Resources\cmdMenuSel f870 "  Yes" "  No"
+if %ERRORLEVEL% == 1 goto repair
+if %ERRORLEVEL% == 2 goto mainmenu
+
+:repair
+Title Repairing...
+cls
+MODE 81,17
+echo -------------------------------------------------------------------------------
+echo ##### Please, wait. Ignore everything what will appear in a few seconds. #####
+echo -------------------------------------------------------------------------------
+timeout 3 >nul
+move /y %launcherpath%\resourcepacks\FarmersDelight_ToolFix_1.0+1.19.2.zip %userprofile%\.minearea\temp
+move /y %launcherpath%\resourcepacks\MandalasGUI_Legacy+Modded_Dakmode_v4.2.zip %userprofile%\.minearea\temp
+move /y %launcherpath%\resourcepacks\Naturalist Old Models.zip %userprofile%\.minearea\temp
+move /y %launcherpath%\resourcepacks\WDA-NoFlyingStructures-OWEND-1.18.2-1.19.zip %userprofile%\.minearea\temp
+move /y %launcherpath%\shaderpacks\ComplementaryShaders_v4.7.1.zip %userprofile%\.minearea\temp
+move /y %launcherpath%\shaderpacks\ComplementaryShaders_v4.7.1.zip.txt %userprofile%\.minearea\temp
+cls
+echo Removed: 4 resourcepacks, 1 shaderpack, 1 shaderpacks profile if they existed.
+timeout 3 >nul
+goto mainmenu
 
 :javainstall
 Title Installing Java...
@@ -327,19 +360,15 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to install your game...
 echo        After success you need to select fabric loader in your MC launcher.
 echo -------------------------------------------------------------------------------
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/servers.dat" --ssl-no-revoke --output servers.dat
-move /y servers.dat %launcherpath%
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.001" --ssl-no-revoke --output fabric.7z.001
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.002" --ssl-no-revoke --output fabric.7z.002
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.003" --ssl-no-revoke --output fabric.7z.003
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric.7z.004" --ssl-no-revoke --output fabric.7z.004
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/fabric/fabric.7z.001" --ssl-no-revoke --output fabric.7z.001
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/fabric/fabric.7z.002" --ssl-no-revoke --output fabric.7z.002
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/fabric/fabric.7z.003" --ssl-no-revoke --output fabric.7z.003
 for %%I in ("fabric.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
 move /y fabric.7z.001 %userprofile%\.minearea\temp
 move /y fabric.7z.002 %userprofile%\.minearea\temp
 move /y fabric.7z.003 %userprofile%\.minearea\temp
-move /y fabric.7z.004 %userprofile%\.minearea\temp
 robocopy Resources\.minecraft %launcherpath% /E /MOVE
 if exist "%launcherpath%\config\puzzle.json" (
     goto modsinstall
@@ -421,7 +450,7 @@ start update.bat
 goto fabricinstall
 
 :fabricinstall
-if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
+if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.24-1.19.2\fabric-loader-0.14.24-1.19.2.jar" (
     goto downloadcomplete
 ) else (
     goto fabricmissing
@@ -434,7 +463,7 @@ MODE 87,10
 echo --------------------------------------------------------------------------------
 echo Your Fabric loader is missing, so it will be installed in a few seconds.
 echo If it gives an error, then try to launch the file manually. Report back issues.
-echo If you download fabric via your launcher make sure the version is 0.14.21.
+echo If you download fabric via your launcher make sure the version is 0.14.24.
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar

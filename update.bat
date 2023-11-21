@@ -100,9 +100,9 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-::BYABCQAAAIIeSYH/t8kZBg== 104
+::BYABCQAAAEAeif/nFOE= 110
 ::BYAxCQAAAIMayXbYv5qcYQ== 105
-findstr /m "BYAxCQAAAIMayXbYv5qcYQ==" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BYABCQAAAEAeif/nFOE=" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -184,7 +184,7 @@ goto mainmenu
 
 :prismcheck
 Title Checking Prism folders...
-findstr /m "BYAxCQAAAIMayXbYv5qcYQ==" %appdata%\PrismLauncher\instances\1.19.2\check.verify >Nul
+findstr /m "BYABCQAAAEAeif/nFOE=" %appdata%\PrismLauncher\instances\1.19.2\check.verify >Nul
 if %errorlevel%==0 (
 goto launcherprism
 )
@@ -203,8 +203,8 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/Mineare
 move /y instance.cfg %appdata%\PrismLauncher\instances\1.19.2
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mmc-pack.json" --ssl-no-revoke --output mmc-pack.json
 move /y mmc-pack.json %appdata%\PrismLauncher\instances\1.19.2
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/prismlauncher/minearea2k20_avatar.jpg" --ssl-no-revoke --output minearea2k20_avatar.jpg
-move /y minearea2k20_avatar.jpg %appdata%\PrismLauncher\icons
+curl -L  "https://raw.githubusercontent.com/Rockstar234/RequirementsForScripts/main/MineareaUpdater/minearea.ico" --ssl-no-revoke --output minearea.ico
+move /y minearea.ico %appdata%\PrismLauncher\instances\1.19.2
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/check.verify" --ssl-no-revoke --output check.verify
 move /y check.verify %appdata%\PrismLauncher\instances\1.19.2
 goto prismcheck
@@ -272,7 +272,7 @@ Title Game Updater
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo Welcome to Game Updater menu. Updater version is 1.0.4. If this version doesn't
+echo Welcome to Game Updater menu. Updater version is 1.1.0. If this version doesn't
 echo match the version in discord, then click Update Client. If version is fine and
 echo you need to update your game, then click Update Mods. You can also update
 echo game files, configs and etc by clicking Install Game button.
@@ -350,115 +350,107 @@ echo ---------------------------------------------------------------------------
 echo                        Trying to update your game...
 echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.001" --ssl-no-revoke --output mods.7z.001
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.001" --ssl-no-revoke --output mods.7z.001
 cls
-echo Downloading... (1/28)
+echo Downloading... (1/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.002" --ssl-no-revoke --output mods.7z.002
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.002" --ssl-no-revoke --output mods.7z.002
 cls
-echo Downloading... (2/28)
+echo Downloading... (2/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.003" --ssl-no-revoke --output mods.7z.003
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.003" --ssl-no-revoke --output mods.7z.003
 cls
-echo Downloading... (3/28)
+echo Downloading... (3/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.004" --ssl-no-revoke --output mods.7z.004
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.004" --ssl-no-revoke --output mods.7z.004
 cls
-echo Downloading... (4/28)
+echo Downloading... (4/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.005" --ssl-no-revoke --output mods.7z.005
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.005" --ssl-no-revoke --output mods.7z.005
 cls
-echo Downloading... (5/28)
+echo Downloading... (5/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.006" --ssl-no-revoke --output mods.7z.006
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.006" --ssl-no-revoke --output mods.7z.006
 cls
-echo Downloading... (6/28)
+echo Downloading... (6/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.007" --ssl-no-revoke --output mods.7z.007
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.007" --ssl-no-revoke --output mods.7z.007
 cls
-echo Downloading... (7/28)
+echo Downloading... (7/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.008" --ssl-no-revoke --output mods.7z.008
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.008" --ssl-no-revoke --output mods.7z.008
 cls
-echo Downloading... (8/28)
+echo Downloading... (8/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.009" --ssl-no-revoke --output mods.7z.009
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.009" --ssl-no-revoke --output mods.7z.009
 cls
-echo Downloading... (9/28)
+echo Downloading... (9/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.010" --ssl-no-revoke --output mods.7z.010
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.010" --ssl-no-revoke --output mods.7z.010
 cls
-echo Downloading... (10/28)
+echo Downloading... (10/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.011" --ssl-no-revoke --output mods.7z.011
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.011" --ssl-no-revoke --output mods.7z.011
 cls
-echo Downloading... (11/28)
+echo Downloading... (11/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.012" --ssl-no-revoke --output mods.7z.012
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.012" --ssl-no-revoke --output mods.7z.012
 cls
-echo Downloading... (12/28)
+echo Downloading... (12/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.013" --ssl-no-revoke --output mods.7z.013
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.013" --ssl-no-revoke --output mods.7z.013
 cls
-echo Downloading... (13/28)
+echo Downloading... (13/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.014" --ssl-no-revoke --output mods.7z.014
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.014" --ssl-no-revoke --output mods.7z.014
 cls
-echo Downloading... (14/28)
+echo Downloading... (14/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.015" --ssl-no-revoke --output mods.7z.015
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.015" --ssl-no-revoke --output mods.7z.015
 cls
-echo Downloading... (15/28)
+echo Downloading... (15/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.016" --ssl-no-revoke --output mods.7z.016
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.016" --ssl-no-revoke --output mods.7z.016
 cls
-echo Downloading... (16/28)
+echo Downloading... (16/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.017" --ssl-no-revoke --output mods.7z.017
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.017" --ssl-no-revoke --output mods.7z.017
 cls
-echo Downloading... (17/28)
+echo Downloading... (17/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.018" --ssl-no-revoke --output mods.7z.018
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.018" --ssl-no-revoke --output mods.7z.018
 cls
-echo Downloading... (18/28)
+echo Downloading... (18/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.019" --ssl-no-revoke --output mods.7z.019
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.019" --ssl-no-revoke --output mods.7z.019
 cls
-echo Downloading... (19/28)
+echo Downloading... (19/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.020" --ssl-no-revoke --output mods.7z.020
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.020" --ssl-no-revoke --output mods.7z.020
 cls
-echo Downloading... (20/28)
+echo Downloading... (20/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.021" --ssl-no-revoke --output mods.7z.021
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.021" --ssl-no-revoke --output mods.7z.021
 cls
-echo Downloading... (21/28)
+echo Downloading... (21/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.022" --ssl-no-revoke --output mods.7z.022
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.022" --ssl-no-revoke --output mods.7z.022
 cls
-echo Downloading... (22/28)
+echo Downloading... (22/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.023" --ssl-no-revoke --output mods.7z.023
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.023" --ssl-no-revoke --output mods.7z.023
 cls
-echo Downloading... (23/28)
+echo Downloading... (23/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.024" --ssl-no-revoke --output mods.7z.024
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.024" --ssl-no-revoke --output mods.7z.024
 cls
-echo Downloading... (24/28)
+echo Downloading... (24/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.025" --ssl-no-revoke --output mods.7z.025
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.025" --ssl-no-revoke --output mods.7z.025
 cls
-echo Downloading... (25/28)
+echo Downloading... (25/26)
 echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.026" --ssl-no-revoke --output mods.7z.026
-cls
-echo Downloading... (26/28)
-echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.027" --ssl-no-revoke --output mods.7z.027
-cls
-echo Downloading... (27/28)
-echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/mods/mods.7z.028" --ssl-no-revoke --output mods.7z.028
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.026" --ssl-no-revoke --output mods.7z.026
 for %%I in ("mods.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
@@ -491,9 +483,7 @@ move /y mods.7z.023 %userprofile%\.minearea\temp
 move /y mods.7z.024 %userprofile%\.minearea\temp
 move /y mods.7z.025 %userprofile%\.minearea\temp
 move /y mods.7z.026 %userprofile%\.minearea\temp
-move /y mods.7z.027 %userprofile%\.minearea\temp
-move /y mods.7z.028 %userprofile%\.minearea\temp
-if exist "%launcherpath%\mods\Zoomify-2.9.0.jar" (
+if exist "%launcherpath%\mods\voidz-1.0.9.jar" (
     goto updatecomplete
 ) else (
     goto somethingwentwrong
