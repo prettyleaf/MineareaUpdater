@@ -447,10 +447,6 @@ cls
 echo Downloading... (24/26)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.025" --ssl-no-revoke --output mods.7z.025
-cls
-echo Downloading... (25/26)
-echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/mods/mods.7z.026" --ssl-no-revoke --output mods.7z.026
 for %%I in ("mods.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
@@ -482,8 +478,7 @@ move /y mods.7z.022 %userprofile%\.minearea\temp
 move /y mods.7z.023 %userprofile%\.minearea\temp
 move /y mods.7z.024 %userprofile%\.minearea\temp
 move /y mods.7z.025 %userprofile%\.minearea\temp
-move /y mods.7z.026 %userprofile%\.minearea\temp
-if exist "%launcherpath%\mods\voidz-1.0.9.jar" (
+if exist "%launcherpath%\mods\bclib-2.1.7.jar" (
     goto updatecomplete
 ) else (
     goto somethingwentwrong
