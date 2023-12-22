@@ -417,7 +417,7 @@ start update.bat
 goto fabricinstall
 
 :fabricinstall
-if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.24-1.19.2\fabric-loader-0.14.24-1.19.2.jar" (
+if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
     goto downloadcomplete
 ) else (
     goto fabricmissing
@@ -430,7 +430,7 @@ MODE 87,10
 echo --------------------------------------------------------------------------------
 echo Your Fabric loader is missing, so it will be installed in a few seconds.
 echo If it gives an error, then try to launch the file manually. Report back issues.
-echo If you download fabric via your launcher make sure the version is 0.14.24.
+echo If you download fabric via your launcher make sure the version is 0.14.21.
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
