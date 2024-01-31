@@ -175,7 +175,7 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/Mineare
 move /y instance.cfg %appdata%\PrismLauncher\instances\ProminenceRPG
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mmc-pack.json" --ssl-no-revoke --output mmc-pack.json
 move /y mmc-pack.json %appdata%\PrismLauncher\instances\ProminenceRPG
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prismlauncher/check.verify" --ssl-no-revoke --output check.verify
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/check.verify" --ssl-no-revoke --output check.verify
 move /y check.verify %appdata%\PrismLauncher\instances\ProminenceRPG
 goto prismcheck
 
@@ -298,6 +298,9 @@ for %%I in ("fabric.7z.001") do (
 move /y fabric.7z.001 %userprofile%\.minearea\temp
 move /y fabric.7z.002 %userprofile%\.minearea\temp
 move /y fabric.7z.003 %userprofile%\.minearea\temp
+move /y fabric.7z.004 %userprofile%\.minearea\temp
+move /y fabric.7z.005 %userprofile%\.minearea\temp
+move /y fabric.7z.006 %userprofile%\.minearea\temp
 robocopy Resources\.minecraft %launcherpath% /E /MOVE
 if exist "%launcherpath%\config\yigd.json" (
     goto modsinstall
