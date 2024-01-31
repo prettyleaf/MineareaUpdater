@@ -36,7 +36,7 @@ goto updatesfound
 )
 
 :updatesfound
-Title Checking updates...4
+Title Checking updates...
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
@@ -65,11 +65,13 @@ echo ---------------------------------------------------------------------------
 echo ###################### Please, wait. Clearing cache... #########################
 echo --------------------------------------------------------------------------------
 timeout 2 >nul
-cd %userprofile%\.minearea\temp
-
+cd Resources
 del * /S /Q
-
+cls
+cd %userprofile%\.minearea\temp
+del * /S /Q
 rmdir /S /Q "%userprofile%\.minearea\temp"
 cls
 echo Operation succeeded.
-timeout 1 >nul
+pause
+exit
