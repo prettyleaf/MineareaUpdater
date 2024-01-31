@@ -352,7 +352,8 @@ echo ---------------------------------------------------------------------------
 echo ########################### Download Complete! #################################
 echo --------------------------------------------------------------------------------
 timeout 2 >nul
-goto mainmenu
+start Prominence_update.bat
+goto closescript
 
 :somethingwentwrong
 Title Something went wrong!
@@ -378,7 +379,6 @@ echo ### Your client is installed, but mods are missing. Launching update.bat...
 echo #### HINT: Click Update Game to install mods and then you can launch game. ####
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
-start Prominence_update.bat
 goto fabricinstall
 
 :fabricinstall
