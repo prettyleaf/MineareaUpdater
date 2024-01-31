@@ -260,7 +260,7 @@ Title Installing Java...
 cls
 MODE 81,17
 curl -L  "https://download.oracle.com/java/18/archive/jdk-18.0.2.1_windows-x64_bin.exe" --ssl-no-revoke --output jdk-18.0.2.1_windows-x64_bin.exe
-move /y jdk-17.0.9_windows-x64_bin.exe %userprofile%\.minearea\temp
+move /y jdk-18.0.2.1_windows-x64_bin.exe %userprofile%\.minearea\temp
 cls
 echo -------------------------------------------------------------------------------
 echo ################## Downloading and launching your installer. ##################
@@ -352,8 +352,7 @@ echo ---------------------------------------------------------------------------
 echo ########################### Download Complete! #################################
 echo --------------------------------------------------------------------------------
 timeout 2 >nul
-start Prominence_update.bat
-goto closescript
+goto mainmenu
 
 :somethingwentwrong
 Title Something went wrong!
@@ -379,6 +378,7 @@ echo ### Your client is installed, but mods are missing. Launching update.bat...
 echo #### HINT: Click Update Game to install mods and then you can launch game. ####
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
+start Prominence_update.bat
 goto fabricinstall
 
 :fabricinstall
