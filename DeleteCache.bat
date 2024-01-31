@@ -73,5 +73,3 @@ rmdir /S /Q "%userprofile%\.minearea\temp"
 cls
 echo Operation succeeded.
 timeout 1 >nul
-
-:cacheClear2
