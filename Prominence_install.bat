@@ -378,11 +378,11 @@ echo ### Your client is installed, but mods are missing. Launching update.bat...
 echo #### HINT: Click Update Game to install mods and then you can launch game. ####
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
-start update.bat
+start Prominence_update.bat
 goto fabricinstall
 
 :fabricinstall
-if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.21-1.19.2\fabric-loader-0.14.21-1.19.2.jar" (
+if exist "%appdata%\.minecraft\versions\fabric-loader-0.14.25-1.20.1\fabric-loader-0.14.25-1.20.1.jar" (
     goto downloadcomplete
 ) else (
     goto fabricmissing
@@ -395,12 +395,12 @@ MODE 87,10
 echo --------------------------------------------------------------------------------
 echo Your Fabric loader is missing, so it will be installed in a few seconds.
 echo If it gives an error, then try to launch the file manually. Report back issues.
-echo If you download fabric via your launcher make sure the version is 0.14.21.
+echo If you download fabric via your launcher make sure the version is 0.14.25.
 echo --------------------------------------------------------------------------------
 timeout 5 >nul
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/fabric-installer-0.11.2.jar" --ssl-no-revoke --output fabric-installer-0.11.2.jar
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/java.ps1" --ssl-no-revoke --output java.ps1
-Powershell.exe -executionpolicy remotesigned -File java.ps1
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/java18.ps1" --ssl-no-revoke --output java18.ps1
+Powershell.exe -executionpolicy remotesigned -File java18.ps1
 move /y fabric-installer-0.11.2.jar %userprofile%\.minearea\temp
-move /y java.ps1 %userprofile%\.minearea\temp
+move /y java18.ps1 %userprofile%\.minearea\temp
 goto fabricinstall
