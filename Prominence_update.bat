@@ -55,7 +55,7 @@ move cmdmenusel.exe Resources
 goto cmdCheck
 
 :java17Check
-if exist "C:\Program Files\Java\jdk-18.0.2.1\bin\java.exe" (
+if exist "C:\Program Files\Eclipse Adoptium\jdk-18.0.2.101-hotspot\bin\javaw.exe" (
 goto foldercheck
 ) else (
 goto javaWarning

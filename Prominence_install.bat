@@ -55,7 +55,7 @@ move cmdmenusel.exe Resources
 goto cmdCheck
 
 :java17Check
-if exist "C:\Program Files\Java\jdk-18.0.2.1\bin\java.exe" (
+if exist "C:\Program Files\Eclipse Adoptium\jdk-18.0.2.101-hotspot\bin\javaw.exe" (
 goto foldercheck
 ) else (
 goto javaWarning
@@ -265,6 +265,8 @@ for %%I in ("jre.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources" "%%I" -aoa && del %%I
     )
 move /y Resources\jre.msi %userprofile%\.minearea\temp
+move /y jre.7z.001 %userprofile%\.minearea\temp
+move /y jre.7z.002 %userprofile%\.minearea\temp
 cls
 echo -------------------------------------------------------------------------------
 echo ################## Downloading and launching your installer. ##################
