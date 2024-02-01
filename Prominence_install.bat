@@ -65,7 +65,7 @@ goto javaWarning
 cls
 MODE 79,20
 echo -------------------------------------------------------------------------------
-echo ########################### Java 18 is missing! ###############################
+echo ######################### Adoptium 18 is missing! #############################
 echo ########## You can install/update Java in main menu. Redirecting... ###########
 echo -------------------------------------------------------------------------------
 timeout /T 3 >nul
@@ -100,7 +100,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BcBBDQAAAAHATFL4mv5hbl8D" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BUCxCQAwCHulF2Qo1Ickg4Ox+P8Q/k6XqOS5CDwD" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -114,9 +114,9 @@ Title Checking updates...4
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo  Your dowloader is outdated and it downloads wrong MC modpack. Please update.
-echo                             Redirecting you...
-echo              Don't forget to delete outdated downloader folder.
+echo # Your dowloader is outdated and it downloads wrong MC modpack. Please update. #
+echo ################              Redirecting you...                ################
+echo ############## Don't forget to delete outdated downloader folder. ##############
 echo -------------------------------------------------------------------------------
 timeout 5 >nul
 start "" https://github.com/Rockstar234/MineareaUpdater/releases
@@ -156,7 +156,7 @@ goto mainmenu
 
 :prismcheck
 Title Checking Prism folders...
-findstr /m "BcBBDQAAAAHATFL4mv5hbl8D" %appdata%\PrismLauncher\instances\ProminenceRPG\check.verify >Nul
+findstr /m "BUCxCQAwCHulF2Qo1Ickg4Ox+P8Q/k6XqOS5CDwD" %appdata%\PrismLauncher\instances\ProminenceRPG\check.verify >Nul
 if %errorlevel%==0 (
 goto launcherprism
 )
@@ -230,7 +230,7 @@ Title Game Downloader
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo Welcome to Game Downloader menu. Current version is 1.0.0. If this version
+echo Welcome to Game Downloader menu. Current version is 2.6.5. If this version
 echo doesn't match the version in discord, then click Update Client. If version is
 echo fine and you need to update your mods, then click Update Game. You can also update
 echo game files, configs and etc by clicking Install Game button.
@@ -259,15 +259,19 @@ if %ERRORLEVEL% == 2 goto mainmenu
 Title Installing Java...
 cls
 MODE 81,17
-curl -L  "https://download.oracle.com/java/18/archive/jdk-18.0.2.1_windows-x64_bin.exe" --ssl-no-revoke --output jdk-18.0.2.1_windows-x64_bin.exe
-move /y jdk-18.0.2.1_windows-x64_bin.exe %userprofile%\.minearea\temp
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/jre.7z.001" --ssl-no-revoke --output jre.7z.001
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/jre.7z.002" --ssl-no-revoke --output jre.7z.002
+for %%I in ("jre.7z.001") do (
+    "Resources\7z.exe" x -y -o"Resources" "%%I" -aoa && del %%I
+    )
+move /y Resources\jre.msi %userprofile%\.minearea\temp
 cls
 echo -------------------------------------------------------------------------------
 echo ################## Downloading and launching your installer. ##################
 echo ################# Press Enter when installation is finished. ##################
 echo -------------------------------------------------------------------------------
 timeout 3 >nul
-start "" "%userprofile%\.minearea\temp\jdk-18.0.2.1_windows-x64_bin.exe"
+start "" "%userprofile%\.minearea\temp\jre.msi"
 pause
 cls
 echo -------------------------------------------------------------------------------
@@ -291,7 +295,7 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/Mineare
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/fabric.7z.004" --ssl-no-revoke --output fabric.7z.004
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/fabric.7z.005" --ssl-no-revoke --output fabric.7z.005
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/fabric.7z.006" --ssl-no-revoke --output fabric.7z.006
-
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/fabric.7z.007" --ssl-no-revoke --output fabric.7z.007
 for %%I in ("fabric.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
@@ -301,6 +305,7 @@ move /y fabric.7z.003 %userprofile%\.minearea\temp
 move /y fabric.7z.004 %userprofile%\.minearea\temp
 move /y fabric.7z.005 %userprofile%\.minearea\temp
 move /y fabric.7z.006 %userprofile%\.minearea\temp
+move /y fabric.7z.007 %userprofile%\.minearea\temp
 robocopy Resources\.minecraft %launcherpath% /E /MOVE
 if exist "%launcherpath%\config\yigd.json" (
     goto modsinstall
