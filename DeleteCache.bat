@@ -26,7 +26,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...
-findstr /m "BYAhEQAACMQykYEkiDnuxfcXu30udAQ=" %userprofile%\.minearea\cleaner.verify >Nul
+findstr /m "BUChDQAwDHplFyAquGM/LIiK0mT/C3L/Tlt+OgWCAQ==" %userprofile%\.minearea\cleaner.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )

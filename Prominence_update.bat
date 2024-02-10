@@ -100,7 +100,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BUCxCQAwCHulF2Qo1Ickg4Ox+P8Q/k6XqOS5CDwD" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BUChDQAwDHplFyAquGM/LIiK0mT/C3L/Tlt+OgWCAQ==" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -156,7 +156,7 @@ goto mainmenu
 
 :prismcheck
 Title Checking Prism folders...
-findstr /m "BUCxCQAwCHulF2Qo1Ickg4Ox+P8Q/k6XqOS5CDwD" %appdata%\PrismLauncher\instances\ProminenceRPG\check.verify >Nul
+findstr /m "BUChDQAwDHplFyAquGM/LIiK0mT/C3L/Tlt+OgWCAQ==" %appdata%\PrismLauncher\instances\ProminenceRPG\check.verify >Nul
 if %errorlevel%==0 (
 goto launcherprism
 )
@@ -230,7 +230,7 @@ Title Game Updater
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo Welcome to Game Updater menu. Updater version is 2.6.5. If this version doesn't
+echo Welcome to Game Updater menu. Updater version is 2.6.6. If this version doesn't
 echo match the version in discord, then click Update Client. If version is fine and
 echo you need to update your game, then click Update Mods. You can also update
 echo game files, configs and etc by clicking Install Game button.
@@ -299,137 +299,129 @@ echo                Mods you had was moved to mods_backup folder.
 echo -------------------------------------------------------------------------------
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.001" --ssl-no-revoke --output mods.7z.001
 cls
-echo Downloading... (1/34)
+echo Downloading... (1/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.002" --ssl-no-revoke --output mods.7z.002
 cls
-echo Downloading... (2/34)
+echo Downloading... (2/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.003" --ssl-no-revoke --output mods.7z.003
 cls
-echo Downloading... (3/34)
+echo Downloading... (3/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.004" --ssl-no-revoke --output mods.7z.004
 cls
-echo Downloading... (4/34)
+echo Downloading... (4/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.005" --ssl-no-revoke --output mods.7z.005
 cls
-echo Downloading... (5/34)
+echo Downloading... (5/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.006" --ssl-no-revoke --output mods.7z.006
 cls
-echo Downloading... (6/34)
+echo Downloading... (6/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.007" --ssl-no-revoke --output mods.7z.007
 cls
-echo Downloading... (7/34)
+echo Downloading... (7/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.008" --ssl-no-revoke --output mods.7z.008
 cls
-echo Downloading... (8/34)
+echo Downloading... (8/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.009" --ssl-no-revoke --output mods.7z.009
 cls
-echo Downloading... (9/34)
+echo Downloading... (9/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.010" --ssl-no-revoke --output mods.7z.010
 cls
-echo Downloading... (10/34)
+echo Downloading... (10/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.011" --ssl-no-revoke --output mods.7z.011
 cls
-echo Downloading... (11/34)
+echo Downloading... (11/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.012" --ssl-no-revoke --output mods.7z.012
 cls
-echo Downloading... (12/34)
+echo Downloading... (12/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.013" --ssl-no-revoke --output mods.7z.013
 cls
-echo Downloading... (13/34)
+echo Downloading... (13/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.014" --ssl-no-revoke --output mods.7z.014
 cls
-echo Downloading... (14/34)
+echo Downloading... (14/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.015" --ssl-no-revoke --output mods.7z.015
 cls
-echo Downloading... (15/34)
+echo Downloading... (15/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.016" --ssl-no-revoke --output mods.7z.016
 cls
-echo Downloading... (16/34)
+echo Downloading... (16/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.017" --ssl-no-revoke --output mods.7z.017
 cls
-echo Downloading... (17/34)
+echo Downloading... (17/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.018" --ssl-no-revoke --output mods.7z.018
 cls
-echo Downloading... (18/34)
+echo Downloading... (18/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.019" --ssl-no-revoke --output mods.7z.019
 cls
-echo Downloading... (19/34)
+echo Downloading... (19/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.020" --ssl-no-revoke --output mods.7z.020
 cls
-echo Downloading... (20/34)
+echo Downloading... (20/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.021" --ssl-no-revoke --output mods.7z.021
 cls
-echo Downloading... (21/34)
+echo Downloading... (21/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.022" --ssl-no-revoke --output mods.7z.022
 cls
-echo Downloading... (22/34)
+echo Downloading... (22/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.023" --ssl-no-revoke --output mods.7z.023
 cls
-echo Downloading... (23/34)
+echo Downloading... (23/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.024" --ssl-no-revoke --output mods.7z.024
 cls
-echo Downloading... (24/34)
+echo Downloading... (24/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.025" --ssl-no-revoke --output mods.7z.025
 cls
-echo Downloading... (25/34)
+echo Downloading... (25/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.026" --ssl-no-revoke --output mods.7z.026
 cls
-echo Downloading... (26/34)
+echo Downloading... (26/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.027" --ssl-no-revoke --output mods.7z.027
 cls
-echo Downloading... (27/34)
+echo Downloading... (27/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.028" --ssl-no-revoke --output mods.7z.028
 cls
-echo Downloading... (28/34)
+echo Downloading... (28/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.029" --ssl-no-revoke --output mods.7z.029
 cls
-echo Downloading... (29/34)
+echo Downloading... (29/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.030" --ssl-no-revoke --output mods.7z.030
 cls
-echo Downloading... (30/34)
+echo Downloading... (30/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.031" --ssl-no-revoke --output mods.7z.031
 cls
-echo Downloading... (31/34)
+echo Downloading... (31/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.032" --ssl-no-revoke --output mods.7z.032
-cls
-echo Downloading... (32/34)
-echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.033" --ssl-no-revoke --output mods.7z.033
-cls
-echo Downloading... (33/34)
-echo.
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.034" --ssl-no-revoke --output mods.7z.034
 for %%I in ("mods.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
@@ -468,8 +460,6 @@ move /y mods.7z.029 %userprofile%\.minearea\temp
 move /y mods.7z.030 %userprofile%\.minearea\temp
 move /y mods.7z.031 %userprofile%\.minearea\temp
 move /y mods.7z.032 %userprofile%\.minearea\temp
-move /y mods.7z.033 %userprofile%\.minearea\temp
-move /y mods.7z.034 %userprofile%\.minearea\temp
 if exist "%launcherpath%\mods\archon-0.6.0.jar" (
     goto updatecomplete
 ) else (

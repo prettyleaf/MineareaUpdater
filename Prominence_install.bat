@@ -100,7 +100,7 @@ goto versioncheck
 
 :versioncheck
 Title Checking updates...3
-findstr /m "BUCxCQAwCHulF2Qo1Ickg4Ox+P8Q/k6XqOS5CDwD" %userprofile%\.minearea\version.verify >Nul
+findstr /m "BUChDQAwDHplFyAquGM/LIiK0mT/C3L/Tlt+OgWCAQ==" %userprofile%\.minearea\version.verify >Nul
 if %errorlevel%==0 (
 goto noupdatesfound
 )
@@ -156,7 +156,7 @@ goto mainmenu
 
 :prismcheck
 Title Checking Prism folders...
-findstr /m "BUCxCQAwCHulF2Qo1Ickg4Ox+P8Q/k6XqOS5CDwD" %appdata%\PrismLauncher\instances\ProminenceRPG\check.verify >Nul
+findstr /m "BUChDQAwDHplFyAquGM/LIiK0mT/C3L/Tlt+OgWCAQ==" %appdata%\PrismLauncher\instances\ProminenceRPG\check.verify >Nul
 if %errorlevel%==0 (
 goto launcherprism
 )
@@ -230,7 +230,7 @@ Title Game Downloader
 cls
 MODE 87,17
 echo -------------------------------------------------------------------------------
-echo Welcome to Game Downloader menu. Current version is 2.6.5. If this version
+echo Welcome to Game Downloader menu. Current version is 2.6.6. If this version
 echo doesn't match the version in discord, then click Update Client. If version is
 echo fine and you need to update your mods, then click Update Game. You can also update
 echo game files, configs and etc by clicking Install Game button.
@@ -297,7 +297,6 @@ curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/Mineare
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/fabric.7z.004" --ssl-no-revoke --output fabric.7z.004
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/fabric.7z.005" --ssl-no-revoke --output fabric.7z.005
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/fabric.7z.006" --ssl-no-revoke --output fabric.7z.006
-curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/fabric.7z.007" --ssl-no-revoke --output fabric.7z.007
 for %%I in ("fabric.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\.minecraft" "%%I" -aoa && del %%I
     )
@@ -307,7 +306,6 @@ move /y fabric.7z.003 %userprofile%\.minearea\temp
 move /y fabric.7z.004 %userprofile%\.minearea\temp
 move /y fabric.7z.005 %userprofile%\.minearea\temp
 move /y fabric.7z.006 %userprofile%\.minearea\temp
-move /y fabric.7z.007 %userprofile%\.minearea\temp
 robocopy Resources\.minecraft %launcherpath% /E /MOVE
 if exist "%launcherpath%\config\yigd.json" (
     goto modsinstall
