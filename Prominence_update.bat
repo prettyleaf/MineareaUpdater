@@ -422,6 +422,10 @@ cls
 echo Downloading... (31/32)
 echo.
 curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.032" --ssl-no-revoke --output mods.7z.032
+cls
+echo Downloading... (32/32)
+echo.
+curl -L  "https://github.com/Rockstar234/RequirementsForScripts/raw/main/MineareaUpdater/prominence/mods/mods.7z.033" --ssl-no-revoke --output mods.7z.033
 for %%I in ("mods.7z.001") do (
     "Resources\7z.exe" x -y -o"Resources\mods" "%%I" -aoa && del %%I
     )
@@ -460,6 +464,7 @@ move /y mods.7z.029 %userprofile%\.minearea\temp
 move /y mods.7z.030 %userprofile%\.minearea\temp
 move /y mods.7z.031 %userprofile%\.minearea\temp
 move /y mods.7z.032 %userprofile%\.minearea\temp
+move /y mods.7z.033 %userprofile%\.minearea\temp
 if exist "%launcherpath%\mods\archon-0.6.0.jar" (
     goto updatecomplete
 ) else (
